@@ -1,0 +1,36 @@
+@font-face{font-family: 'Lato'; src:url('../fonts/Lato-Light.ttf')}
+body,html {
+    background: #f9f9f9;
+    font-family: 'Lato', sans-serif !important;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Lato', sans-serif !important;
+}
+#container {
+	min-height: 768px;
+    padding: 0px 5px;
+}
+.dark-background {
+    background: #222;
+    color: #fff;
+}
+h1.dark-background, h2.dark-background, h3.dark-background {
+	color: #fff;
+}
+#debtCounter {
+    font-weight: bold;
+}
+#talks-tabs {
+ background: #fff; padding: 15px 5px; border: 1px solid #ccc; border-top: 0px;
+}
+.notify-box {
+	width: 400px;
+	position: absolute;
+	top: 5px;
+	margin: 0px 0 0 -200px;
+	   left: 50%;
+}
+.plus_seconds, .minus_seconds { color: #777; }
+.plus_seconds:hover, .minus_seconds:hover { color: #333; cursor: pointer; }
+
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Settings</title>
+        <link rel="stylesheet" href="vendor/uikit/css/uikit.gradient.min.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="vendor/jquery.min.js"></script>
+        <script src="vendor/uikit/js/uikit.min.js"></script>
+        <script src="vendor/underscore-min.js"></script>
+        <script src="vendor/backbone-min.js"></script>
+    </head>
+    <body style="width: 100%; height: 100%; ">
+        <div class="uk-grid">
+        <div class="uk-width-2-6"><h2 class="uk-text-muted"><i class="uk-icon-gear"></i> <span class="lang_settings"></span></h2></div>
+            <div class="uk-width-2-6"></div>
+            <div class="uk-width-2-6 uk-text-right">
+				<div class="uk-button-group">
+					<a href="index.html" class="uk-button uk-button-secondary"><i class="uk-icon-clock-o"></i></a>
+					<button class="uk-button uk-button-danger" id="closeApp"><i class="uk-icon-power-off"></i></button>
+				</div>
+			</div>
+		</div>
+        <div class="uk-grid">
+            <div class="uk-width-7-10">
+				<ul class="uk-tab" data-uk-tab="{connect:'#talks-tabs'}">
+                <li class="uk-active"><a href="#"><span class="lang_weekday_meeting"></span></a></li>
+					<li><a href="#1"><span class="lang_weekend_meeting"></span></a></li>
+				</ul>
+                <ul id="talks-tabs" class="uk-switcher">
+					<li id="talks_container">
+						<table class="uk-table uk-table-hover uk-table-stripped uk-overflow-container">
+							<thead>
+								<tr>
+									<th class="uk-width-1-10">#</th>
+                                    <th class="uk-width-1-10 uk-text-center"><span class="lang_disabled"></span></th>
+									<th class="uk-width-4-10"><span class="lang_title"></span></th>
+									<th class="uk-width-2-10"><span class="lang_duration"></span></th>
+									<th class="uk-width-1-10 uk-text-center"><span class="lang_flexible"></span></th>
+									<th class="uk-width-1-10 uk-text-center"><span class="lang_invisible"></span></th>
+								</tr>
+							</thead>
+							<tbody id="weekdayTalksTable"> </tbody>
+						</table>
+						<div class="uk-grid uk-text-right">
+							<div class="uk-width-6-10"></div>
+							<div class="uk-width-2-10">
+								<button class="uk-button uk-button-success uk-width-1-1" id="saveWeekdayTalks"><span class="lang_save"></span></button>
+							</div>
+							<div class="uk-width-2-10">
+								<button class="uk-button uk-button-secondary uk-width-1-1" id="resetWeekdayTalks"><span class="lang_reset"></span></button>
+							</div>
+						</div>
+
+					</li>
+                    <li id="talks_container_weekend">
+						<table class="uk-table uk-table-hover uk-table-stripped uk-overflow-container">
+							<thead>
+								<tr>
+									<th class="uk-width-1-10">#</th>
+                                    <th class="uk-width-1-10 uk-text-center"><span class="lang_disabled"></span></th>
+									<th class="uk-width-4-10"><span class="lang_title"></span></th>
+									<th class="uk-width-2-10"><span class="lang_duration"></span></th>
+									<th class="uk-width-1-10 uk-text-center"><span class="lang_flexible"></span></th>
+									<th class="uk-width-1-10 uk-text-center"><span class="lang_invisible"></span></th>
+								</tr>
+							</thead>
+							<tbody id="weekendTalksTable"> </tbody>
+						</table>
+						<div class="uk-grid uk-text-right">
+							<div class="uk-width-6-10"></div>
+							<div class="uk-width-2-10">
+								<button class="uk-button uk-button-success uk-width-1-1" id="saveWeekendTalks"><span class="lang_save"></span></button>
+							</div>
+							<div class="uk-width-2-10">
+								<button class="uk-button uk-button-secondary uk-width-1-1" id="resetWeekendTalks"><span src="" class="lang_reset"></span></button>
+							</div>
+						</div>
+
+
+					</li>
+            </div>
+
+            <div class="uk-width-3-10"><h3>Help</h3></div>
+        </div>
+		<script type="text/template" id="talkElement">
+            <tr id="<%=id%>">
+                <td><%=id%></td>
+                <td class="uk-form uk-text-center"><input type="checkbox" name="disabled" <%if(disabled) {%>checked<%}%>/></td>
+                <td class="uk-form"><input type="text"  class="uk-width-1-1 uk-form-blank" name="title" value="<%=title%>"></td>
+                <td class="uk-form"><input type="number"  class="uk-width-2-3 uk-form-blank" name="duration" value="<%=duration%>"> (sec.)</td>
+                <td class="uk-form uk-text-center"><input type="checkbox" name="flexible" <%if(flexible) {%>checked<%}%>/></td>
+                <td class="uk-form uk-text-center"><input type="checkbox" name="invisible" <%if(invisible) {%>checked<%}%>/></td>
+            </tr>
+        </script>
+        <script type="text/template" id="newTalkElement">
+            <tr id="0">
+                <td><button class="uk-button uk-button-small uk-button-primary" id="addTalk"><i class="uk-icon-plus"></i></button></td>
+                <td class="uk-form uk-text-center"><input type="checkbox" name="disabled"/></td>
+                <td class="uk-form"><input type="text uk-form-blank"  name="title" class="uk-width-1-1" value=""></td>
+                <td class="uk-form"><input type="number uk-form-blank"  name="duration" class="uk-width-2-3" value=""> (sec.)</td>
+                <td class="uk-form uk-text-center"><input type="checkbox" name="flexible" /></td>
+                <td class="uk-form uk-text-center"><input type="checkbox" name="invisible" /></td>
+            </tr>
+        </script>
+        <script src="js/common.js"></script>
+        <script src="js/language.js"></script>
+        <script src="js/settings.js"></script>
+    </body>
+</html>
+
+

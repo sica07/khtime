@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KHTimer</title>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/toggles-light.css" />
+        <link rel="stylesheet" href="vendor/uikit/css/uikit.almost-flat.min.css" />
+        <link rel="stylesheet" href="vendor/uikit/css/components/form-file.min.css" />
+        <link rel="stylesheet" href="vendor/uikit/css/components/progress.almost-flat.min.css" />
+        <script src="vendor/jquery.min.js"></script>
+        <script src="vendor/uikit/js/uikit.min.js"></script>
+        <script src="vendor/uikit/js/components/upload.min.js"></script>
+        <script src="vendor/underscore-min.js"></script>
+        <script src="vendor/backbone-min.js"></script>
+        <script src="js/language.js"></script>
+    </head>
+    <body>
+        <div class="uk-grid uk-text-center" id="container">
+            <div class="uk-width-3-10 dark-background">
+                <div id="talk_counter_container"></div>
+                <div id="meeting_counter_container"></div>
+            </div>
+            <div class="uk-width-4-10">
+                <div id="clock_container"></div>
+                <div class="uk-tab-center">
+                    <ul class="uk-tab" data-uk-tab="{connect:'#talks-tabs'}" id="meetingTitleTabsContainer">
+                        <li class="uk-active"><a href="#"></a></li>
+                    </ul>
+                </div>
+                <ul id="talks-tabs" class="uk-switcher">
+                    <li id="talks_container"></li>
+                </ul>
+            </div>
+            <div class="uk-width-3-10">
+				<div class="uk-grid">
+					<div class="uk-width-1-1 uk-text-right">
+						<div class="uk-button-group">
+							<a href="settings.html" class="uk-button uk-button-secondary"><i class="uk-icon-gear"></i></a>
+							<button class="uk-button uk-button-danger" id="closeApp"><i class="uk-icon-power-off"></i></button>
+						</div>
+					</div>
+				</div>
+
+                <h2 class="lang_songs"></h2>
+                <div id ="songs" class="uk-grid"> 
+                    <div class="uk-width-1-1">
+                        <button class="uk-button uk-button-primary uk-width-1-1 lang_musical_prelude" id="playContinuous"></button>
+                        <div class="uk-grid uk-grid-collapse uk-margin-top">
+                            <div class="uk-width-2-6 uk-form"><input type="number" min="1" max="154" class="uk-width-1-1" placeholder="song nr." id="titleAudio1"/></div>
+                            <div class="uk-width-3-6 uk-form uk-margin-small-top" id="durationAudio1"></div>
+                            <div class="uk-width-1-6 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="playAudio1"><i class="uk-icon-play"></i></button></div>
+                        </div>
+                        <div class="uk-grid uk-grid-collapse">
+                            <div class="uk-width-2-6 uk-form"><input type="number" min="1" max="154" class="uk-width-1-1"placeholder="song nr." id="titleAudio2"/></div>
+                            <div class="uk-width-3-6 uk-form uk-margin-small-top" id="durationAudio2"></div>
+                            <div class="uk-width-1-6 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="playAudio2"><i class="uk-icon-play"></i></button></div>
+                        </div>
+                        <div class="uk-grid uk-grid-collapse">
+                            <div class="uk-width-2-6 uk-form"><input type="number" min="1" max="154" class="uk-width-1-1" placeholder="song nr." id="titleAudio3"/></div>
+                            <div class="uk-width-3-6 uk-form uk-margin-small-top" id="durationAudio3"></div>
+                            <div class="uk-width-1-6 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="playAudio3"><i class="uk-icon-play"></i></button></div>
+                        </div>
+                        <div class="uk-grid uk-padding-remove uk-margin-small-top">
+                            <div class="uk-width-2-6">
+                                <div class="toggle toggle-light" id="playAvi" style="width: 50px;"></div>
+                            </div>
+                            <div class="uk-width-4-6 uk-text-right">
+                                <span class="lang_play_avi_songs"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="lang_videos"></h2>
+                <div id ="video" class="uk-grid"> 
+                    <div class="uk-width-1-1">
+                        <div class="uk-grid uk-grid-collapse">
+                            <div class="uk-width-1-5 uk-form-file uk-text-left">
+                                <button class="uk-button"><i class="uk-icon-file-video-o"></i></button>
+                                <input type="file" id="videoFile1" accept="video/mp4">
+                            </div>
+                            <div class="uk-width-3-5 uk-form uk-padding-remove" id="durationVideo1"><input type="TEXT" class="uk-width-1-1" readonly placeholder=""></div>
+                            <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="playVideo1"><i class="uk-icon-play"></i></button></div>
+                        </div>
+                        <div class="uk-grid uk-grid-collapse">
+                            <div class="uk-width-1-5 uk-form-file uk-text-left">
+                                <button class="uk-button"><i class="uk-icon-file-video-o"></i></button>
+                                <input type="file" id="videoFile2" accept="video/mp4">
+                            </div>
+                            <div class="uk-width-3-5 uk-form uk-padding-remove" id="durationVideo2"><input type="TEXT" class="uk-width-1-1" readonly placeholder=""></div>
+                            <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="playVideo2"><i class="uk-icon-play"></i></button></div>
+                        </div>
+                        <div class="uk-grid uk-grid-collapse">
+                            <div class="uk-width-1-5 uk-form-file uk-text-left">
+                                <button class="uk-button"><i class="uk-icon-file-video-o"></i></button>
+                                <input type="file" id="videoFile3" accept="video/mp4">
+                            </div>
+                            <div class="uk-width-3-5 uk-form uk-padding-remove" id="durationVideo3"><input type="TEXT" class="uk-width-1-1" readonly placeholder=""></div>
+                            <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="playVideo3"><i class="uk-icon-play"></i></button></div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="lang_images_and_pdf"></h3>
+                <div id ="pdf"  class="uk-grid uk-grid-collapse">
+                    <div class="uk-width-1-5 uk-form-file uk-text-left">
+                        <button class="uk-button"><i class="uk-icon-file-o"></i></button>
+                        <input type="file" id="pdfFile" accept="image/*|application/pdf">
+                    </div>
+                    <div class="uk-width-3-5 uk-form uk-padding-remove" id="fileName">
+                        <input type="TEXT" class="uk-width-6-10" readonly placeholder="" id="imagePath"/>
+                        <input type="number" class="uk-width-3-10" placeholder="pag." id="pageNr" value="0"/>
+                    </div>
+                    <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="showPdf"><i class="uk-icon-eye"></i></button></div>
+                </div>
+
+                <h2 class="lang_displays"></h2>
+                <div id ="display" class="uk-grid"> 
+                    <div class="uk-width-1-1 uk-text-left">
+                            <div class="uk-button-dropdown uk-width-1-1" data-uk-dropdown>
+                            <button class="uk-button uk-width-1-1 uk-text-left" id="test"><span class="lang_select_display_for_prelude"></span><span id="premeeting-display-nr"></span><i class="uk-icon-caret-down"></i></button>
+                                <div class="uk-dropdown">
+                                    <ul class="uk-nav uk-nav-dropdown display_selectors" id="premeeting-display">
+                                        <li><a href="#0" class="uk-text-danger uk-text-small"><span class=" lang_deactivate_prelude_display"></span><i class="uk-icon-ban"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr/>
+
+                            <div class="uk-button-dropdown uk-width-1-1" data-uk-dropdown>
+                                <button class="uk-button uk-width-1-1 uk-text-left"><span class="lang_select_display_for_timer"></span><span id="timer-display-nr"></span><i class="uk-icon-caret-down"></i></button>
+                                <div class="uk-dropdown">
+                                    <ul class="uk-nav uk-nav-dropdown display_selectors" id="timer-display">
+                                        <li><a href="#" class="uk-text-danger uk-text-small"><i class="uk-icon-ban"></i><span class="lang_deactivate_timer_display"></span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <hr/>
+
+                            <div class="uk-button-dropdown uk-width-1-1" data-uk-dropdown>
+                                <button class="uk-button uk-width-1-1 uk-text-left"><span class='lang_select_display_for_video'></span><span id="video-display-nr"></span><i class="uk-icon-caret-down"></i></button>
+                                <div class="uk-dropdown">
+                                    <ul class="uk-nav uk-nav-dropdown display_selectors" id="video-display">
+                                        <li><a href="#" class="uk-text-danger uk-text-small"><i class="uk-icon-ban"></i><span class='lang_deactivate_video_display'></span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script type="text/template" id="displayListItem">
+            <li><a href="#<%=id%>" class=""><%=text%><%=id%></a></li>
+        </script>
+        <script type="text/template" id="talkCounterContainer">
+            <h3 class="dark-background"><%=talkTitle%></h3>
+            <div id="talkCounter" ></div>
+        </script>
+        <script type="text/template" id="meetingCounterContainer">
+            <div class="uk-grid">
+                <div class="uk-width-1-2">
+                    <div id="meetingCounter"></div>
+                    <!--<h6 class="dark-background">Meeting counter</h6>-->
+                </div>
+                <div class="uk-width-1-2">
+                <h6 class="dark-background lang_debt_time"></h6>
+                     <div id="debtCounter"></div>
+                </div>
+            </div>
+            <button class="uk-button uk-button-success uk-width-8-10 uk-margin-small-top lang_start_meeting"></button>
+            <div class="uk-form uk-margin-small-top">
+                <div class="uk-form-row uk-grid">
+                <div class="uk-width-1-5">
+                    <div class="toggle toggle-light" id="recalculateTime" style="width: 50px;"></div>
+                </div>
+                <div class="uk-width-4-5 uk-text-left">
+                    <span class="lang_recalculate_time"></span>
+                </div>
+            </div>
+        </script>
+        <script type="text/template" id="talkContainer">
+            <div class="uk-grid uk-margin-top">
+                <div class="uk-width-1-6">
+                    <button class="uk-button uk-button-small uk-button-success uk-width-1-1" id="talk_<%=id%>"><i class="uk-icon-hourglass-start"></i></button>
+                </div>
+                <div class="uk-width-3-6 uk-text-left" id="talk_title_<%=id%>">
+                    <%=title%>
+                </div>
+                <div class="uk-width-2-6" id="talk_time_<%=id%>">
+                        <i class="uk-icon-plus-square plus_seconds"></i>
+                        &nbsp;<span class="duration_formatted"><%=duration_formatted%></span>&nbsp;
+                        <i  class="uk-icon-minus-square minus_seconds"></i>
+                </div>
+            </div>
+        </script>
+
+<script src="js/countdown360.js"></script>
+<script src="js/toggles.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/main.js"></script>
+    </body>
+</html>
