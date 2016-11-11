@@ -40,8 +40,7 @@ var MeetingCounterModel = Backbone.Model.extend({
     defaults: {
         meetingCounter: 0,
         debtTime: 0,
-        //meetingDuration: 6300,
-        meetingDuration: 500,
+        meetingDuration: 6300,
         remained: 0,
         talkId: 0,
         counterOn: false
