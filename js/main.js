@@ -468,6 +468,7 @@ $(document).ready(function(){
             $("#showPdf").children('i').removeClass('uk-icon-close').addClass('uk-icon-eye');
             var html = '<input type="TEXT" class="uk-width-1-1" readonly placeholder=""/>';
             $("#imagePath").html(html);
+            $("#pdfControls").slideUp();
             return;
         }
 
