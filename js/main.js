@@ -112,7 +112,7 @@ var TalkView = Backbone.View.extend({
         } else {
             var spent = talkCounterModel.get('counter');
             this.model.set('spent', spent, {silent: true})
-                $button.removeClass('uk-button-danger');
+            $button.removeClass('uk-button-danger');
                 //$button.removeClass('uk-button-danger').attr('disabled', true);
             $button.children('i').addClass('uk-icon-check').removeClass('uk-icon-hourglass-start');
             $title.removeClass('uk-text-success').addClass('uk-text-muted');
@@ -331,6 +331,13 @@ var MeetingCounterContainer = Backbone.View.extend({
             $button.removeClass("uk-button-danger").addClass("uk-button-success")
                 this.model.set('counterOn', false);
             this.countdown.stop();
+                console.log(talks)
+            talks.each(function(model){
+                if(model.get('status')) {
+                    model.set('status', null);
+                }
+                talkCounterModel.set({title: lang['no_talk_yet'], counterOn: false});
+            });
             $("a[href='settings.html']").show();
         } else {
             $button.text(lang["end_meeting"]);
