@@ -195,9 +195,13 @@
                     <%=title%>
                 </div>
                 <div class="uk-width-2-6" id="talk_time_<%=id%>">
+                        <%if(flexible){%>
                         <i class="uk-icon-plus-square plus_seconds"></i>
+                        <%}%>
                         &nbsp;<span class="duration_formatted"><%=duration_formatted%></span>&nbsp;
+                        <%if(flexible){%>
                         <i  class="uk-icon-minus-square minus_seconds"></i>
+                        <%}%>
                 </div>
             </div>
         </script>
