@@ -452,12 +452,17 @@ $(document).ready(function(){
         imageFile = evt.currentTarget.files[0];
         pdfFile = evt.currentTarget.files[0];
         document.getElementById('imagePath').value = evt.currentTarget.files[0].name
+        if(pdfFile.type === 'application/pdf') {
+            $("#pdfOptions").slideDown();
+        } else {
+            $("#pdfOptions").slideUp();
+        }
     })
     $("#showPdf").on('click', function(evt){
         var file = $("#imagePath").val();
         var pageNr = $("#pageNr").val();
-        console.log(pageNr)
-    if(videoWindow) {
+        var pageZoom = $("#pageZoom").val();
+        if(videoWindow) {
             videoWindow.close();
             videoWindow = false;
             $("#showPdf").children('i').removeClass('uk-icon-close').addClass('uk-icon-eye');
@@ -466,11 +471,17 @@ $(document).ready(function(){
             return;
         }
 
-        createPdfWindow(pdfFile, parseInt(localStorage.getItem('videoDisplay')) - 1, pageNr);
+        createPdfWindow(pdfFile, parseInt(localStorage.getItem('videoDisplay')) - 1, pageNr, pageZoom);
         $("#showPdf").children('i').removeClass('uk-icon-eye').addClass('uk-icon-close');
 
     })
-function createPdfWindow(pdfFile, displayNr, pageNr){
+    $(".pdfControls").click(function(){
+        if(!videoWindow) { return; }
+        var fileURL = URL.createObjectURL(pdfFile);
+        videoWindow.window.location.hash = '#page=' + $("#pageNr").val() + '&zoom=' + $("#pageZoom").val();
+        videoWindow.reload();
+    });
+function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
     if(displayNr < 0) {
         ukNotify(lang['video_display_disabled'], 1)
     }
@@ -478,10 +489,10 @@ function createPdfWindow(pdfFile, displayNr, pageNr){
         var fileURL = URL.createObjectURL(pdfFile)
         var url = 'image.html';
         if (pdfFile.type === 'application/pdf') {
-            url = fileURL + '#=' + pageNr;
+            url = fileURL + '#page=' + pageNr + '&zoom=' + pageZoom;
         }
         nw.Window.open(url, {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
-            win.enterKioskMode();
+            win.enterFullscreen();
             videoWindow = win;
             if (url !== 'image.html') { return; }
             win.on('enter-fullscreen',function(win){
@@ -534,7 +545,7 @@ function createPdfWindow(pdfFile, displayNr, pageNr){
                 if(!videoWindow) {
                     nw.Window.open('video.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
                         win.window.document.createElement('p');
-                        win.enterKioskMode();
+                        win.enterFullscreen();
                         win.on('enter-fullscreen',function(win){
                             video = this.window.document.querySelector('video')
                             try{
