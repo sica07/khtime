@@ -19,6 +19,7 @@ var windowTalkCountdown = false;
 var timerWindow = false;
 var videoFiles = [];
 var videoWindow = false;
+var preludeWindow = false;
 /***********Models**************/
 var TalkCounterModel = Backbone.Model.extend({
     defaults: {
@@ -112,7 +113,7 @@ var TalkView = Backbone.View.extend({
         } else {
             var spent = talkCounterModel.get('counter');
             this.model.set('spent', spent, {silent: true})
-                $button.removeClass('uk-button-danger');
+            $button.removeClass('uk-button-danger');
                 //$button.removeClass('uk-button-danger').attr('disabled', true);
             $button.children('i').addClass('uk-icon-check').removeClass('uk-icon-hourglass-start');
             $title.removeClass('uk-text-success').addClass('uk-text-muted');
@@ -130,7 +131,6 @@ var TalkView = Backbone.View.extend({
 
         }
     }
-
 });
 
 var TalksView = Backbone.View.extend({
@@ -311,7 +311,8 @@ var TalkCounterContainer = Backbone.View.extend({
 var MeetingCounterContainer = Backbone.View.extend({
     el: "#meeting_counter_container",
     events: {
-        'click .uk-button': 'toggleCounterState'
+        'click button.uk-button': 'toggleCounterState',
+        'click a.uk-button': 'showPreludeDisplay'
     },
     initialize: function() {
         this.listenTo(this.model, 'change:debtTime', function(){this.loadDebtCounter()})
@@ -325,12 +326,20 @@ var MeetingCounterContainer = Backbone.View.extend({
         return this;
     },
     toggleCounterState: function() {
-        var $button = this.$el.find(".uk-button");
+        var $button = this.$el.find("button.uk-button");
+        var $preludeBtn = this.$el.find("a.uk-button");
         if(this.model.get('counterOn')) {
             $button.text(lang["start_meeting"]);
             $button.removeClass("uk-button-danger").addClass("uk-button-success")
                 this.model.set('counterOn', false);
             this.countdown.stop();
+                console.log(talks)
+            talks.each(function(model){
+                if(model.get('status')) {
+                    model.set('status', null);
+                }
+                talkCounterModel.set({title: lang['no_talk_yet'], counterOn: false});
+            });
             $("a[href='settings.html']").show();
         } else {
             $button.text(lang["end_meeting"]);
@@ -339,8 +348,49 @@ var MeetingCounterContainer = Backbone.View.extend({
             this.countdown.start();
             this.stopPreludePlaying();
             $("a[href='settings.html']").hide();
+	    $preludeBtn.show();
+	    preludeWindow.close();
+	    preludeWindow = false;
         }
     },
+showPreludeDisplay: function(evt) {
+	$(evt.currentTarget).hide();
+	if(!preludeWindow) {
+		var displayNr = localStorage.getItem('premeetingDisplay') - 1;
+            nw.Window.open('timer.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
+                win.enterFullscreen();
+                win.on('enter-fullscreen',function(win){
+                    var that = this;
+                    setTimeout(function(){
+                        var $document = $(that.window.document);
+                        var width = $document.width();
+                        $document.find("h1").text(lang['prelude_window_title']);
+                        var $title = $document.find("h1");
+			$title.css({'fontSize':'8em', 'color':'#fff','margin':'.5em'});
+			$document.find('body').css({'background':'#4a6da7'});
+                        windowPreludeCountdown = $document.find("#talkCounter").countdown360({
+                            radius:  width / 7,
+                            seconds: 180,
+                            fillStyle: '#4a6da7',
+                            //strokeStyle: "#325796",          // the color of the stroke
+                            strokeStyle: "#fff",          // the color of the stroke
+                            strokeWidth: 5,
+                            fontSize: width / 15,
+                            fontColor: "#fff",            // the fill color
+                            onComplete: function () {
+				windowPreludeCountdown.close();
+                            },
+                            onTimeUpdate: function(time){
+                            }
+                        });
+
+                    }, 1000)
+                })
+             preludeWindow = win;
+            });
+	}
+    },
+
     stopPreludePlaying: function() {
         var $preludeButton = $("#playContinuous");
         if($('audio').length > 0) {
@@ -468,6 +518,7 @@ $(document).ready(function(){
             $("#showPdf").children('i').removeClass('uk-icon-close').addClass('uk-icon-eye');
             var html = '<input type="TEXT" class="uk-width-1-1" readonly placeholder=""/>';
             $("#imagePath").html(html);
+            $("#pdfControls").slideUp();
             return;
         }
 
@@ -920,4 +971,5 @@ function addTranslatedStrings() {
     $('.lang_recalculate_time' ).text(lang['recalculate_time']);
     $('.lang_play_avi_songs' ).text(lang['play_avi_songs']);
     $('.lang_images_and_pdf' ).text(lang['images_and_pdf']);
+    $('.lang_show_prelude_display' ).text(lang['show_prelude_display']);
 }

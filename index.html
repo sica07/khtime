@@ -111,7 +111,7 @@
                     <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="showPdf"><i class="uk-icon-eye"></i></button></div>
                     <div class="uk-width-5-5 uk-form uk-padding-remove" id="pdfOptions">
                         <label for="pageNr" class="uk-width-2-10">Pag.</label>
-                        <input type="number" class="uk-width-3-10 pdfControls" min="0" id="pageNr" value="0"/>
+                        <input type="number" class="uk-width-3-10 pdfControls" min="1" id="pageNr" value="1"/>
                         <label for="pageZoom" class="uk-width-2-10">Zoom</label>
                         <input type="number" class="uk-width-3-10 pdfControls" step="25" id="pageZoom" value="100"/>
                     </div>
@@ -178,12 +178,15 @@
             <button class="uk-button uk-button-success uk-width-8-10 uk-margin-small-top lang_start_meeting"></button>
             <div class="uk-form uk-margin-small-top">
                 <div class="uk-form-row uk-grid">
-                <div class="uk-width-1-5">
-                    <div class="toggle toggle-light" id="recalculateTime" style="width: 50px;"></div>
-                </div>
-                <div class="uk-width-4-5 uk-text-left">
-                    <span class="lang_recalculate_time"></span>
-                </div>
+			<div class="uk-width-1-5">
+			    <div class="toggle toggle-light" id="recalculateTime" style="width: 50px;"></div>
+			</div>
+			<div class="uk-width-4-5 uk-text-left">
+			    <span class="lang_recalculate_time"></span>
+			</div>
+			<div class="uk-width-5-5 uk-text-center">
+			    <a href="#" class="uk-button uk-button-primary uk-width-8-10 uk-margin-large-top lang_show_prelude_display"></a>
+			</div>
             </div>
         </script>
         <script type="text/template" id="talkContainer">
