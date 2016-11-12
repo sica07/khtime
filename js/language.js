@@ -40,4 +40,6 @@ var lang = {
     'show_prelude_display': 'Afiseaza ecran preludiu',
     //'prelude_window_title': 'Vă rugăm să vă ocupaţi locurile!',
     'prelude_window_title': 'Va rugam sa va ocupati locurile!',
+    'prelude_countdown': 'Durata numaratoare inversa',
+    'mins': 'min.'
 };

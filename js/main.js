@@ -13,6 +13,7 @@ if(!localStorage.getItem('musicFolder')) {
     localStorage.songLanguage = 'E';
     localStorage.weekdayTalks = '[]';
     localStorage.weekendTalks = '[]';
+    localStorage.preludeCountdown = '60';
 }
 var talkCountdown = false;
 var windowTalkCountdown = false;
@@ -312,7 +313,8 @@ var MeetingCounterContainer = Backbone.View.extend({
     el: "#meeting_counter_container",
     events: {
         'click button.uk-button': 'toggleCounterState',
-        'click a.uk-button': 'showPreludeDisplay'
+        'click a.uk-button': 'showPreludeDisplay',
+        'click #preludeCountdown': 'setPreludeCountdown'
     },
     initialize: function() {
         this.listenTo(this.model, 'change:debtTime', function(){this.loadDebtCounter()})
@@ -320,6 +322,7 @@ var MeetingCounterContainer = Backbone.View.extend({
     render: function(){
         var tpl = _.template($('#meetingCounterContainer').html())(this.model.toJSON())
         this.$el.html(tpl);
+this.$el.find("#preludeCountdown").val(parseInt(localStorage.getItem('preludeCountdown'))/60);
         this.loadMeetingCounter();
         this.loadDebtCounter();
 
@@ -327,13 +330,12 @@ var MeetingCounterContainer = Backbone.View.extend({
     },
     toggleCounterState: function() {
         var $button = this.$el.find("button.uk-button");
-        var $preludeBtn = this.$el.find("a.uk-button");
+        var $preludeDisplayContainer = $("#preludeDisplayContainer");
         if(this.model.get('counterOn')) {
             $button.text(lang["start_meeting"]);
             $button.removeClass("uk-button-danger").addClass("uk-button-success")
                 this.model.set('counterOn', false);
             this.countdown.stop();
-                console.log(talks)
             talks.each(function(model){
                 if(model.get('status')) {
                     model.set('status', null);
@@ -344,17 +346,17 @@ var MeetingCounterContainer = Backbone.View.extend({
         } else {
             $button.text(lang["end_meeting"]);
             $button.removeClass("uk-button-success").addClass("uk-button-danger")
-                this.model.set('counterOn', true);
+            this.model.set('counterOn', true);
             this.countdown.start();
             this.stopPreludePlaying();
             $("a[href='settings.html']").hide();
-	    $preludeBtn.show();
+	    $preludeDisplayContainer.slideDown();
 	    preludeWindow.close();
 	    preludeWindow = false;
         }
     },
 showPreludeDisplay: function(evt) {
-	$(evt.currentTarget).hide();
+	$("#preludeDisplayContainer").slideUp();
 	if(!preludeWindow) {
 		var displayNr = localStorage.getItem('premeetingDisplay') - 1;
             nw.Window.open('timer.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
@@ -370,7 +372,7 @@ showPreludeDisplay: function(evt) {
 			$document.find('body').css({'background':'#4a6da7'});
                         windowPreludeCountdown = $document.find("#talkCounter").countdown360({
                             radius:  width / 7,
-                            seconds: 180,
+                            seconds: localStorage.getItem('preludeCountdown'),
                             fillStyle: '#4a6da7',
                             //strokeStyle: "#325796",          // the color of the stroke
                             strokeStyle: "#fff",          // the color of the stroke
@@ -390,6 +392,11 @@ showPreludeDisplay: function(evt) {
             });
 	}
     },
+    setPreludeCountdown: function() {
+	var preludeCountdown = $("#preludeCountdown").val()
+	preludeCountdown = parseInt(preludeCountdown) * 60;
+	localStorage.setItem('preludeCountdown',preludeCountdown)
+	},
 
     stopPreludePlaying: function() {
         var $preludeButton = $("#playContinuous");
@@ -918,21 +925,14 @@ function calculateRemainingTime(collection) {
             remainingTalks.add(model);
         }
     });
-    console.log('Talks till end ' + totalTalksTimeTillEnd);
     debtTime = that.get('meetingCounter') - totalTalksTimeTillEnd;
     that.set('debtTime', debtTime);
-    console.log('Debt time ' + debtTime);
 
     if(debtTime < 0) {
         remainingTalks.each(function(model){
             if(model.get('percent') && model.get('percent') > 0) {
-                console.log('-----')
-                console.log('percent:' + model.get('percent'))
                 var newPercent = model.get('percent') + (model.get('percent') * unflexiblePercent);
-                console.log('new percent' + newPercent)
                 var duration = parseInt(model.get('duration')) + (debtTime * newPercent);
-                console.log('DURATION' + duration)
-                console.log('------')
                 model.set('duration', Math.floor(duration), {silent:true});
                 model.trigger('durationRecalculated');
             }
@@ -972,4 +972,6 @@ function addTranslatedStrings() {
     $('.lang_play_avi_songs' ).text(lang['play_avi_songs']);
     $('.lang_images_and_pdf' ).text(lang['images_and_pdf']);
     $('.lang_show_prelude_display' ).text(lang['show_prelude_display']);
+    $('.lang_prelude_countdown' ).text(lang['prelude_countdown']);
+    $('.lang_mins' ).text(lang['mins']);
 }
