@@ -211,4 +211,5 @@ function addTranslatedStrings() {
     $(".lang_invisible").text(lang['invisible']);
     $(".lang_save").text(lang['save']);
     $(".lang_reset").text(lang['reset']);
+    $(".lang_settings").text(lang['settings']);
 }
