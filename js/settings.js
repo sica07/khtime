@@ -34,12 +34,15 @@ var TalkView = Backbone.View.extend({
     tagName: "tr",
     initialize: function() {
         this.render();
+
     },
     render: function() {
         var tpl = _.template($('#talkElement').html())(this.model.toJSON());
         this.$el.html(tpl);
+
         return this;
-    }
+    },
+
 });
 
 var NewTalkView = Backbone.View.extend({
@@ -57,6 +60,7 @@ var WeekendTalksContainer = Backbone.View.extend({
     el: "#weekendTalksTable",
     events: {
         'click #addWeekendTalk' : 'addTalk',
+        'click .toggle': 'toggleDisable',
         'change input' : 'updateModel'
     },
     initialize: function() {
@@ -68,6 +72,13 @@ var WeekendTalksContainer = Backbone.View.extend({
             this.render();
         });
     },
+    toggleDisable: function(evt){
+        var id = $(evt.currentTarget).parents('tr').attr('id');
+        var model = this.collection.findWhere({'id' : parseInt(id)});
+        if(model) {
+            model.set('disabled', !model.get('disabled'));
+        }
+    },
     render: function() {
         var that = this;
         this.$el.empty();
@@ -75,10 +86,23 @@ var WeekendTalksContainer = Backbone.View.extend({
         this.collection.each(function(model,i){
             var talkElView = new TalkView({model: model});
             that.$el.append(talkElView.$el.html());
+            that.applyToggle(model);
         });
         this.$el.append(newTalkElView.$el.html());
 
         return this;
+    },
+    applyToggle: function(model) {
+        var $tr = this.$el.find('#' + model.get('id'));
+        var $disabled = $tr.find("#disabled");
+        $disabled.toggles();
+        if(!model.get('disabled')) {
+            $disabled.toggles(true);
+            $tr.find('input').removeClass('uk-text-muted');
+        } else {
+            $disabled.toggles(false);
+            $tr.find('input').addClass('uk-text-muted');
+        }
     },
     updateModel: function(evt) {
         var $el = $(evt.currentTarget);
@@ -108,7 +132,8 @@ var WeekdayTalksContainer = Backbone.View.extend({
     el: "#weekdayTalksTable",
     events: {
         'click #addTalk' : 'addTalk',
-        'change input' : 'updateModel'
+        'change input' : 'updateModel',
+        'click .toggle': 'toggleDisable'
     },
     initialize: function() {
         this.model = new TalkModel();
@@ -126,10 +151,30 @@ var WeekdayTalksContainer = Backbone.View.extend({
         this.collection.each(function(model,i){
             var talkElView = new TalkView({model: model});
             that.$el.append(talkElView.$el.html());
+            that.applyToggle(model);
         });
         this.$el.append(newTalkElView.$el.html());
 
         return this;
+    },
+    toggleDisable: function(evt){
+        var id = $(evt.currentTarget).parents('tr').attr('id');
+        var model = this.collection.findWhere({'id' : parseInt(id)});
+        if(model) {
+            model.set('disabled', !model.get('disabled'));
+        }
+    },
+    applyToggle: function(model) {
+        var $tr = this.$el.find('#' + model.get('id'));
+        var $disabled = $tr.find("#disabled");
+        $disabled.toggles();
+        if(!model.get('disabled')) {
+            $disabled.toggles(true);
+            $tr.find('input').removeClass('uk-text-muted');
+        } else {
+            $disabled.toggles(false);
+            $tr.find('input').addClass('uk-text-muted');
+        }
     },
     updateModel: function(evt) {
         var $el = $(evt.currentTarget);

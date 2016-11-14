@@ -4,6 +4,7 @@
         <title>Settings</title>
         <link rel="stylesheet" href="vendor/uikit/css/uikit.gradient.min.css" />
         <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/toggles-light.css" />
         <script src="vendor/jquery.min.js"></script>
         <script src="vendor/uikit/js/uikit.min.js"></script>
         <script src="vendor/underscore-min.js"></script>
@@ -85,7 +86,9 @@
 		<script type="text/template" id="talkElement">
             <tr id="<%=id%>">
                 <td><%=id%></td>
-                <td class="uk-form uk-text-center"><input type="checkbox" name="disabled" <%if(disabled) {%>checked<%}%>/></td>
+                <td class="uk-form uk-text-center">
+
+                <div class="toggle toggle-light" id="disabled" style="width: 50px;"></div>
                 <td class="uk-form"><input type="text"  class="uk-width-1-1 uk-form-blank" name="title" value="<%=title%>"></td>
                 <td class="uk-form"><input type="number"  class="uk-width-2-3 uk-form-blank" name="duration" value="<%=duration%>"> (sec.)</td>
                 <td class="uk-form uk-text-center"><input type="checkbox" name="flexible" <%if(flexible) {%>checked<%}%>/></td>
@@ -102,6 +105,7 @@
                 <td class="uk-form uk-text-center"><input type="checkbox" name="invisible" /></td>
             </tr>
         </script>
+        <script src="js/toggles.min.js"></script>
         <script src="js/common.js"></script>
         <script src="js/language.js"></script>
         <script src="js/settings.js"></script>
