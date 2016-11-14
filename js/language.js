@@ -37,4 +37,9 @@ var lang = {
     'play_avi_songs': 'Ruleaza cantarile in mod avi',
     'changes_saved': 'Modificarile au fost salvate!',
     'images_and_pdf': 'Imagini si fisiere PDF',
+    'show_prelude_display': 'Afiseaza ecran preludiu',
+    //'prelude_window_title': 'Vă rugăm să vă ocupaţi locurile!',
+    'prelude_window_title': 'Va rugam sa va ocupati locurile!',
+    'prelude_countdown': 'Durata numaratoare inversa',
+    'mins': 'min.'
 };
