@@ -13,6 +13,7 @@ if(!localStorage.getItem('musicFolder')) {
     localStorage.songLanguage = 'E';
     localStorage.weekdayTalks = '[]';
     localStorage.weekendTalks = '[]';
+    localStorage.netWeekdayTalks = '[]';
     localStorage.preludeCountdown = '60';
     localStorage.weekendSongs = '[]';
     localStorage.weekdaySongs = '[]';
@@ -74,12 +75,16 @@ var TalksCollection = Backbone.Collection.extend({
 var date = new Date();
 var weekday = date.getDay();
 var talksmodels = JSON.parse(localStorage.getItem('weekdayTalks'));
+if(localStorage.getItem('internetSource') == 'true' ) {
+     talksmodels = JSON.parse(localStorage.getItem('netWeekdayTalks'));
+}
 if (weekday === 0 || weekday === 6) {
     talksmodels = JSON.parse(localStorage.getItem('weekendTalks'));
     $("#meetingTitleTabsContainer").find('a').addClass('lang_weekday_meeting');
 } else {
     $("#meetingTitleTabsContainer").find('a').addClass('lang_weekend_meeting');
 }
+
 var talks = new TalksCollection();
 talks.add(talksmodels);
 
