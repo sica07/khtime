@@ -34,7 +34,7 @@ Date.prototype.getWeek = function() {
                         - 3 + (week1.getDay() + 6) % 7) / 7);
 }
 function getScheduleFromInternet() {
-    var date = new Date('10 Jan 2017');
+    var date = new Date();
     var week = date.getWeek();
     $.get("https://dl.dropboxusercontent.com/u/28737407/" + week + "schedule.json", function(data,err,obj){
         if(obj.status !== 200) {
