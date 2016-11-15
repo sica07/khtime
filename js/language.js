@@ -41,5 +41,6 @@ var lang = {
     //'prelude_window_title': 'Vă rugăm să vă ocupaţi locurile!',
     'prelude_window_title': 'Va rugam sa va ocupati locurile!',
     'prelude_countdown': 'Durata numaratoare inversa',
-    'mins': 'min.'
+    'mins': 'min.',
+    'internet_source': 'Preia lista teme online',
 };

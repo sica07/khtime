@@ -182,6 +182,15 @@ $("document").ready(function() {
     $('#closeApp').click(function(){
         nw.App.quit();
     })
+    /*** Internet source ***/
+    $isrc = $("#internet_source");
+    if(localStorage.getItem('internetSource') == 'true') {
+        $isrc.attr('checked', true);
+    }
+    $isrc.click(function(){
+        val = $isrc.is(':checked');
+        localStorage.setItem('internetSource', val);
+    });
     addTranslatedStrings();
 });
 function ukNotify(text, type) {
@@ -212,4 +221,5 @@ function addTranslatedStrings() {
     $(".lang_save").text(lang['save']);
     $(".lang_reset").text(lang['reset']);
     $(".lang_settings").text(lang['settings']);
+    $(".lang_internet_source").text(lang['internet_source']);
 }

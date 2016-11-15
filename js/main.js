@@ -14,6 +14,7 @@ if(!localStorage.getItem('musicFolder')) {
     localStorage.weekdayTalks = '[]';
     localStorage.weekendTalks = '[]';
     localStorage.preludeCountdown = '60';
+    localStorage.internetSource = false;
 }
 var talkCountdown = false;
 var windowTalkCountdown = false;
