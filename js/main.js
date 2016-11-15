@@ -14,6 +14,8 @@ if(!localStorage.getItem('musicFolder')) {
     localStorage.weekdayTalks = '[]';
     localStorage.weekendTalks = '[]';
     localStorage.preludeCountdown = '60';
+    localStorage.weekendSongs = '[]';
+    localStorage.weekdaySongs = '[]';
 }
 var talkCountdown = false;
 var windowTalkCountdown = false;
@@ -648,6 +650,24 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
             var audio = new Audio();
             var audioplaying = 0;
             var audiosrc, audionr;
+
+            function setSongNr() {
+                    var weekdaySongs = JSON.parse(localStorage.getItem('weekdaySongs'));
+                    var weekendSongs = JSON.parse(localStorage.getItem('weekendSongs'));
+                    if(weekdaySongs.length < 2) {
+                        return;
+                    }
+                    if (weekday === 0 || weekday === 6) {
+                        $("#titleAudio2").val(weekendSongs[0]);
+                        $("#titleAudio3").val(weekendSongs[1]);
+                    } else {
+                        $("#titleAudio1").val(weekdaySongs[0]);
+                        $("#titleAudio2").val(weekdaySongs[1]);
+                        $("#titleAudio3").val(weekdaySongs[2]);
+                    }
+            }
+
+            setSongNr();
 
             function playPrelude(){
                 audio = new Audio();
