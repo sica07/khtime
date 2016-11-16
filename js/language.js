@@ -41,5 +41,7 @@ var lang = {
     //'prelude_window_title': 'Vă rugăm să vă ocupaţi locurile!',
     'prelude_window_title': 'Va rugam sa va ocupati locurile!',
     'prelude_countdown': 'Durata numaratoare inversa',
-    'mins': 'min.'
+    'mins': 'min.',
+    'new_version_available': 'O noua versiune este disponibila!',
+    'update_to_version': 'Actualizeaza la versiunea'
 };

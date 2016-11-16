@@ -1,6 +1,7 @@
 {
     "name": "KHTime",
     "main": "index.html",
+    "version": "0.9.0",
     "window" : {
         "icon": "img/logo256.png",
         "width": 1024,

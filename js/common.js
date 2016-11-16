@@ -57,7 +57,7 @@ function getScheduleFromInternet() {
 function getVersion() {
     $.get('https://dl.dropboxusercontent.com/u/28737407/version', function(data){
         if(data.trim() != localStorage.getItem('version')) {
-            showModal('A new version is available. Please update!')
+            showModal('<h3>' + lang['new_version_available'] + '</h3> <br/> <a href="http://sica07.github.io/khtime/update.html" class="uk-button">' + lang['update_to_version'] + ' ' + data.trim() + '</a>');
         }
     });
 }
