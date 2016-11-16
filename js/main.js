@@ -39,6 +39,7 @@ if(!localStorage.getItem('firstTime')) {
     localStorage.weekendSongs = '[]';
     localStorage.weekdaySongs = '[]';
     localStorage.firstTime = 0;
+    localStorage.version = '0.8.0';
 }
 var talkCountdown = false;
 var windowTalkCountdown = false;
