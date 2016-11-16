@@ -1,7 +1,8 @@
 {
-    "name": "Time",
+    "name": "KHTime",
     "main": "index.html",
     "window" : {
+        "icon": "img/logo256.png",
         "width": 1024,
         "height": 768
     },
