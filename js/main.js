@@ -2,6 +2,7 @@ nw.Screen.Init();
 var screens = nw.Screen.screens;
 //var screens = [1,2];
 //initialization of localStorage
+
 if(!localStorage.getItem('musicFolder')) {
     localStorage.musicFolder = 'Songs/';
     localStorage.aviFolder = 'Avi/';
@@ -702,7 +703,8 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
 
                 if (isVideo) {
                     var audiosrc = 'Cantarea ' + audionr + ' o.mp4'
-                    return localStorage.getItem('aviFolder') + audiosrc;
+                    //return 'file://' + localStorage.getItem('aviFolder') + '/time/' + audiosrc;
+                    return 'Avi/' + audiosrc
                 }
 
                 if (audionr > 135) {
@@ -711,7 +713,7 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
                     var audiosrc = 'iasnm_' + localStorage.getItem('songLanguage') + '_' + audionr + '.mp3'
                 }
 
-                return localStorage.getItem('musicFolder') + audiosrc;
+                return 'file://' + localStorage.getItem('musicFolder') + '/' + audiosrc;
             }
             function addProgressBar(audio, id, video) {
                 var html = '';
@@ -766,6 +768,7 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
                     }
                 } else if (audioplaying === 0) {
 
+                    console.log(audiosrc)
                     if(!fileExists(audiosrc)) {
                         ukNotify(lang['file_not_exists_or_error'], 0);
                         $audioTitle.val('')
@@ -946,7 +949,8 @@ function fileExists(url) {
         url: url,
         type: 'GET',
         async: false,
-        success: function(){
+        success: function(data){
+            console.warn(data)
         },
         error: function(e) {
             response = false;

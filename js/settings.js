@@ -182,6 +182,12 @@ $("document").ready(function() {
     $('#closeApp').click(function(){
         nw.App.quit();
     })
+    $("#avi_src_selector").on('change', function(evt){
+        var srcDir = evt.currentTarget.files[0];
+        var fileURL = URL.createObjectURL(srcDir);
+        console.log(srcDir)
+        localStorage.setItem('aviFolder',srcDir.path);
+    });
     /*** Internet source ***/
     $isrc = $("#internet_source");
     if(localStorage.getItem('internetSource') == 'true') {
