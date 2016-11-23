@@ -185,8 +185,12 @@ $("document").ready(function() {
     $("#avi_src_selector").on('change', function(evt){
         var srcDir = evt.currentTarget.files[0];
         var fileURL = URL.createObjectURL(srcDir);
-        console.log(srcDir)
         localStorage.setItem('aviFolder',srcDir.path);
+    });
+    $("#songs_src_selector").on('change', function(evt){
+        var srcDir = evt.currentTarget.files[0];
+        var fileURL = URL.createObjectURL(srcDir);
+        localStorage.setItem('musicFolder',srcDir.path);
     });
     /*** Internet source ***/
     $isrc = $("#internet_source");
@@ -228,4 +232,6 @@ function addTranslatedStrings() {
     $(".lang_reset").text(lang['reset']);
     $(".lang_settings").text(lang['settings']);
     $(".lang_internet_source").text(lang['internet_source']);
+    $(".lang_avi_source").text(lang['avi_source']);
+    $(".lang_songs_source").text(lang['songs_source']);
 }

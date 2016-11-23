@@ -703,8 +703,8 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
 
                 if (isVideo) {
                     var audiosrc = 'Cantarea ' + audionr + ' o.mp4'
-                    //return 'file://' + localStorage.getItem('aviFolder') + '/time/' + audiosrc;
-                    return 'Avi/' + audiosrc
+                    return 'file://' + localStorage.getItem('aviFolder') + '/' + audiosrc;
+                    //return 'Avi/' + audiosrc
                 }
 
                 if (audionr > 135) {

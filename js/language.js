@@ -43,4 +43,8 @@ var lang = {
     'prelude_countdown': 'Durata numaratoare inversa',
     'mins': 'min.',
     'internet_source': 'Preia lista teme online',
+    'avi_source': 'Alege sursa fisiere avi',
+    'songs_source': 'Alege sursa fisiere audio',
+    'new_version_available': 'O noua versiune este disponibila!',
+    'update_to_version': 'Actualizeaza la versiunea'
 };

@@ -33,5 +33,6 @@ h1.dark-background, h2.dark-background, h3.dark-background {
 .plus_seconds, .minus_seconds { color: #777; }
 .plus_seconds:hover, .minus_seconds:hover { color: #333; cursor: pointer; }
 #pdfOptions {display: none}
+.border-bottom{border-bottom: 1px solid #ddd;}
 
 
