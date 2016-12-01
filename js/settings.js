@@ -246,6 +246,16 @@ $("document").ready(function() {
         val = $isrc.is(':checked');
         localStorage.setItem('internetSource', val);
     });
+    var hrefSongs, hrefNewSongs = '';
+    switch(localStorage.getItem("songLanguage") ) {
+        case 'M':
+            hrefSongs = "https://download-a.akamaihd.net/files/media_music/3d/iasnm_M.mp3.zip";
+            hrefNewSongs = "https://download-a.akamaihd.net/files/media_music/29/ssnw_M.mp3.zip";
+        default:
+            hrefSongs = "https://download-a.akamaihd.net/files/media_music/7f/sjjm_E.mp3.zip";
+    }
+    $("#download_songs").attr("href", hrefSongs);
+    $("#download_new_songs").attr("href", hrefNewSongs);
     addTranslatedStrings();
 });
 function ukNotify(text, type) {
@@ -279,4 +289,6 @@ function addTranslatedStrings() {
     $(".lang_internet_source").text(lang['internet_source']);
     $(".lang_avi_source").text(lang['avi_source']);
     $(".lang_songs_source").text(lang['songs_source']);
+    $(".lang_download_songs").text(lang['download_songs']);
+    $(".lang_download").text(lang['download']);
 }

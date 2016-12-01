@@ -31,6 +31,7 @@ var lang = {
     'flexible': 'Flexibil',
     'invisible': 'Neafisat',
     'save': 'Salveaza',
+    'download': 'Descarca',
     'reset': 'Reseteaza',
     'prepare_finish_talk': 'Pregateste-te sa inchei tema!',
     'please_finish_the_talk': 'Te rugam, incheie tema!',
@@ -46,5 +47,6 @@ var lang = {
     'avi_source': 'Alege sursa fisiere avi',
     'songs_source': 'Alege sursa fisiere audio',
     'new_version_available': 'O noua versiune este disponibila!',
-    'update_to_version': 'Actualizeaza la versiunea'
+    'update_to_version': 'Actualizeaza la versiunea',
+    'download_songs': 'Descarca arhiva zip a fisierelor audio ale cantarilor dupa care salveaza-le in directorul Songs din cadrul aplicatiei KHTimer'
 };
