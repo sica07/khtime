@@ -530,8 +530,10 @@ $(document).ready(function(){
     displaySelectorsView.render();
     $('.toggle').toggles();
     $("#settings_window").click(function(){
-            nw.Window.open('settings.html', {width: 800, height: 600, title:'settings'}, function(win){
-            });
+            nw.Window.open('settings.html', {width: 800, height: 600, title:'settings'}, function(win){ });
+    });
+    $("#schedule_window").click(function(){
+            nw.Window.open('schedule.html', {width: 800, height: 600, title:'schedule'}, function(win){ });
     });
     $("#playAvi").click(function(el){
             if($(this).data('toggles').active) {
