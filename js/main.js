@@ -2,8 +2,28 @@ nw.Screen.Init();
 var screens = nw.Screen.screens;
 //var screens = [1,2];
 //initialization of localStorage
-
-if(!localStorage.getItem('musicFolder')) {
+var defaultWeekdayTalks = [
+        {"id":1,"title":"Cantare si rugaciune de inceput","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+        {"id":2,"title":"Introducere","duration":"180","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":3,"title":"Comori din Cuvant","duration":"600","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":4,"title":"Nestemate","duration":"480","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+        {"id":5,"title":"Citirea Bibliei","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":6,"title":"Sfaturi Citirea Bibliei","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":7,"title":"Sa ne pregatim","duration":"900","invisible":false,"disabled":true,"flexible":true,"talkId":0},
+        {"id":8,"title":"Vizita initiala","duration":"90","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":9,"title":"Sfaturi Vizita Intiala","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":10,"title":"Vizita Ulterioara","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":11,"title":"Sfaturi Vizita Ulterioara","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":12,"title":"Studiu Biblic","duration":"360","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":13,"title":"Sfaturi Studiu Biblic","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":14,"title":"Cantare","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+        {"id":15,"title":"Tema 1","duration":"900","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+        {"id":16,"title":"Tema 2","duration":"360","invisible":false,"disabled":true,"flexible":true,"talkId":0},
+        {"id":17,"title":"Studiu Bibliei","duration":"1800","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+        {"id":18,"title":"Incheiere","duration":"180","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+        {"id":19,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
+];
+if(!localStorage.getItem('firstTime')) {
     localStorage.musicFolder = 'Songs/';
     localStorage.aviFolder = 'Avi/';
     localStorage.playAviSongs = 0;
@@ -12,10 +32,14 @@ if(!localStorage.getItem('musicFolder')) {
     localStorage.videoDisplay = 2;
     localStorage.recalculateTime = 0;
     localStorage.songLanguage = 'E';
-    localStorage.weekdayTalks = '[]';
+    localStorage.weekdayTalks = JSON.stringify(defaultWeekdayTalks);
     localStorage.weekendTalks = '[]';
+    localStorage.netWeekdayTalks = '[]';
     localStorage.preludeCountdown = '60';
     localStorage.internetSource = false;
+    localStorage.weekendSongs = '[]';
+    localStorage.weekdaySongs = '[]';
+    localStorage.firstTime = 0;
 }
 var talkCountdown = false;
 var windowTalkCountdown = false;
@@ -74,12 +98,16 @@ var TalksCollection = Backbone.Collection.extend({
 var date = new Date();
 var weekday = date.getDay();
 var talksmodels = JSON.parse(localStorage.getItem('weekdayTalks'));
+if(localStorage.getItem('internetSource') == 'true' ) {
+     talksmodels = JSON.parse(localStorage.getItem('netWeekdayTalks'));
+}
 if (weekday === 0 || weekday === 6) {
     talksmodels = JSON.parse(localStorage.getItem('weekendTalks'));
-    $("#meetingTitleTabsContainer").find('a').addClass('lang_weekday_meeting');
-} else {
     $("#meetingTitleTabsContainer").find('a').addClass('lang_weekend_meeting');
+} else {
+    $("#meetingTitleTabsContainer").find('a').addClass('lang_weekday_meeting');
 }
+
 var talks = new TalksCollection();
 talks.add(talksmodels);
 
@@ -650,6 +678,24 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
             var audio = new Audio();
             var audioplaying = 0;
             var audiosrc, audionr;
+
+            function setSongNr() {
+                    var weekdaySongs = JSON.parse(localStorage.getItem('weekdaySongs'));
+                    var weekendSongs = JSON.parse(localStorage.getItem('weekendSongs'));
+                    if(weekdaySongs.length < 2) {
+                        return;
+                    }
+                    if (weekday === 0 || weekday === 6) {
+                        $("#titleAudio2").val(weekendSongs[0]);
+                        $("#titleAudio3").val(weekendSongs[1]);
+                    } else {
+                        $("#titleAudio1").val(weekdaySongs[0]);
+                        $("#titleAudio2").val(weekdaySongs[1]);
+                        $("#titleAudio3").val(weekdaySongs[2]);
+                    }
+            }
+
+            setSongNr();
 
             function playPrelude(){
                 audio = new Audio();

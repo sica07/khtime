@@ -25,7 +25,7 @@ var lang = {
     'start_the_meeting_counter': 'Pentru a putea cronometra o tema, porneste cronometrul pentru intrunire ("Incepe intrunire")!',
     'recalculate_time': 'Recalculeaza automat timpii temelor',
     'settings': 'Setari',
-    'disabled': 'Dezactivat',
+    'disabled': 'Activat',
     'title': 'Titlu',
     'duration': 'Durata',
     'flexible': 'Flexibil',
