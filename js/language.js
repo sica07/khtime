@@ -25,12 +25,14 @@ var lang = {
     'start_the_meeting_counter': 'Pentru a putea cronometra o tema, porneste cronometrul pentru intrunire ("Incepe intrunire")!',
     'recalculate_time': 'Recalculeaza automat timpii temelor',
     'settings': 'Setari',
+    'meetings_schedule': 'Programare intrunire',
     'disabled': 'Activat',
     'title': 'Titlu',
     'duration': 'Durata',
     'flexible': 'Flexibil',
     'invisible': 'Neafisat',
     'save': 'Salveaza',
+    'download': 'Descarca',
     'reset': 'Reseteaza',
     'prepare_finish_talk': 'Pregateste-te sa inchei tema!',
     'please_finish_the_talk': 'Te rugam, incheie tema!',
@@ -43,5 +45,10 @@ var lang = {
     'prelude_countdown': 'Durata numaratoare inversa',
     'mins': 'min.',
     'new_version_available': 'O noua versiune este disponibila!',
-    'update_to_version': 'Actualizeaza la versiunea'
+    'update_to_version': 'Actualizeaza la versiunea',
+    'internet_source': 'Preia lista teme online',
+    'avi_source': 'Alege sursa fisiere avi',
+    'songs_source': 'Alege sursa fisiere audio',
+    'download_songs': 'Descarca arhiva zip a fisierelor audio ale cantarilor dupa care salveaza-le in directorul Songs din cadrul aplicatiei KHTimer',
+    'download_avi': 'Descarca arhiva zip a fisierelor avi (video cu versuri) ale cantarilor dupa care salveaza-le in directorul Avi din cadrul aplicatiei KHTimer'
 };

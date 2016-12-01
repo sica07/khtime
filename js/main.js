@@ -2,6 +2,14 @@ nw.Screen.Init();
 var screens = nw.Screen.screens;
 //var screens = [1,2];
 //initialization of localStorage
+var defaultWeekendTalks = [
+        {"id":1,"title":"Cantare si rugaciune de inceput","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+        {"id":2,"title":"Cuvantare publica","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
+        {"id":3,"title":"Cantare","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+        {"id":4,"title":"Studiu Turnului de Veghe","duration":"3600","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+        {"id":5,"title":"Cuvantare de serviciu","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
+        {"id":6,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
+];
 var defaultWeekdayTalks = [
         {"id":1,"title":"Cantare si rugaciune de inceput","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
         {"id":2,"title":"Introducere","duration":"180","invisible":false,"disabled":false,"flexible":false,"talkId":0},
@@ -10,7 +18,7 @@ var defaultWeekdayTalks = [
         {"id":5,"title":"Citirea Bibliei","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
         {"id":6,"title":"Sfaturi Citirea Bibliei","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
         {"id":7,"title":"Sa ne pregatim","duration":"900","invisible":false,"disabled":true,"flexible":true,"talkId":0},
-        {"id":8,"title":"Vizita initiala","duration":"90","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+        {"id":8,"title":"Vizita initiala","duration":"120","invisible":false,"disabled":false,"flexible":false,"talkId":0},
         {"id":9,"title":"Sfaturi Vizita Intiala","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
         {"id":10,"title":"Vizita Ulterioara","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
         {"id":11,"title":"Sfaturi Vizita Ulterioara","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
@@ -20,8 +28,9 @@ var defaultWeekdayTalks = [
         {"id":15,"title":"Tema 1","duration":"900","invisible":false,"disabled":false,"flexible":true,"talkId":0},
         {"id":16,"title":"Tema 2","duration":"360","invisible":false,"disabled":true,"flexible":true,"talkId":0},
         {"id":17,"title":"Studiu Bibliei","duration":"1800","invisible":false,"disabled":false,"flexible":true,"talkId":0},
-        {"id":18,"title":"Incheiere","duration":"180","invisible":false,"disabled":false,"flexible":true,"talkId":0},
-        {"id":19,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
+        {"id":18,"title":"Cuvantare de serviciu","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
+        {"id":19,"title":"Incheiere","duration":"180","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+        {"id":20,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
 ];
 if(!localStorage.getItem('firstTime')) {
     localStorage.musicFolder = 'Songs/';
@@ -33,9 +42,10 @@ if(!localStorage.getItem('firstTime')) {
     localStorage.recalculateTime = 0;
     localStorage.songLanguage = 'E';
     localStorage.weekdayTalks = JSON.stringify(defaultWeekdayTalks);
-    localStorage.weekendTalks = '[]';
+    localStorage.weekendTalks = JSON.stringify(defaultWeekendTalks);
     localStorage.netWeekdayTalks = '[]';
-    localStorage.preludeCountdown = '60';
+    localStorage.preludeCountdown = '120';
+    localStorage.internetSource = false;
     localStorage.weekendSongs = '[]';
     localStorage.weekdaySongs = '[]';
     localStorage.firstTime = 0;
@@ -520,6 +530,12 @@ $(document).ready(function(){
     var displaySelectorsView = new DisplaySelectorView();
     displaySelectorsView.render();
     $('.toggle').toggles();
+    $("#settings_window").click(function(){
+            nw.Window.open('settings.html', {width: 800, height: 600, title:'settings'}, function(win){ });
+    });
+    $("#schedule_window").click(function(){
+            nw.Window.open('schedule.html', {width: 800, height: 600, title:'schedule'}, function(win){ });
+    });
     $("#playAvi").click(function(el){
             if($(this).data('toggles').active) {
                     localStorage.setItem('playAviSong', 1)
@@ -749,7 +765,8 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
 
                 if (isVideo) {
                     var audiosrc = 'Cantarea ' + audionr + ' o.mp4'
-                    return localStorage.getItem('aviFolder') + audiosrc;
+                    return 'file://' + localStorage.getItem('aviFolder') + '/' + audiosrc;
+                    //return 'Avi/' + audiosrc
                 }
 
                 if (audionr > 135) {
@@ -758,7 +775,7 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
                     var audiosrc = 'iasnm_' + localStorage.getItem('songLanguage') + '_' + audionr + '.mp3'
                 }
 
-                return localStorage.getItem('musicFolder') + audiosrc;
+                return 'file://' + localStorage.getItem('musicFolder') + '/' + audiosrc;
             }
             function addProgressBar(audio, id, video) {
                 var html = '';
@@ -813,6 +830,7 @@ function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
                     }
                 } else if (audioplaying === 0) {
 
+                    console.log(audiosrc)
                     if(!fileExists(audiosrc)) {
                         ukNotify(lang['file_not_exists_or_error'], 0);
                         $audioTitle.val('')
@@ -993,7 +1011,8 @@ function fileExists(url) {
         url: url,
         type: 'GET',
         async: false,
-        success: function(){
+        success: function(data){
+            console.warn(data)
         },
         error: function(e) {
             response = false;
