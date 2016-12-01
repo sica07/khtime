@@ -10,123 +10,58 @@
         <script src="vendor/underscore-min.js"></script>
         <script src="vendor/backbone-min.js"></script>
     </head>
-    <body style="width: 100%; height: 100%; ">
-        <div class="uk-grid">
-        <div class="uk-width-2-6"><h2 class="uk-text-muted"><i class="uk-icon-gear"></i> <span class="lang_settings"></span></h2></div>
-            <div class="uk-width-2-6"></div>
+    <body style="width: 100%; height: 100%;">
+        <div class="uk-grid uk-margin-small-left uk-margin-small-top">
+            <div class="uk-width-3-6 uk-padding-remove"><h2 class="uk-text-muted"><i class="uk-icon-gear"></i> <span class="lang_settings"></span></h2></div>
+            <div class="uk-width-1-6"></div>
             <div class="uk-width-2-6 uk-text-right">
-				<div class="uk-button-group">
-					<a href="index.html" class="uk-button uk-button-secondary"><i class="uk-icon-clock-o"></i></a>
-					<button class="uk-button uk-button-danger" id="closeApp"><i class="uk-icon-power-off"></i></button>
-				</div>
-			</div>
-		</div>
-        <div class="uk-grid">
-            <div class="uk-width-7-10">
-				<ul class="uk-tab" data-uk-tab="{connect:'#talks-tabs'}">
-                    <li class="uk-active"><a href="#"><span class="lang_weekday_meeting"></span></a></li>
-					<li><a href="#1"><span class="lang_weekend_meeting"></span></a></li>
-                    <li><a href="#2"><span class="lang_settings"></span></a></li>
-				</ul>
-                <ul id="talks-tabs" class="uk-switcher">
-					<li id="talks_container">
-						<table class="uk-table uk-table-hover uk-table-stripped uk-overflow-container">
-							<thead>
-								<tr>
-									<th class="uk-width-1-10">#</th>
-                                    <th class="uk-width-1-10 uk-text-center"><span class="lang_disabled"></span></th>
-									<th class="uk-width-4-10"><span class="lang_title"></span></th>
-									<th class="uk-width-2-10"><span class="lang_duration"></span></th>
-									<th class="uk-width-1-10 uk-text-center"><span class="lang_flexible"></span></th>
-									<th class="uk-width-1-10 uk-text-center"><span class="lang_invisible"></span></th>
-								</tr>
-							</thead>
-							<tbody id="weekdayTalksTable"> </tbody>
-						</table>
-						<div class="uk-grid uk-text-right">
-							<div class="uk-width-6-10"></div>
-							<div class="uk-width-2-10">
-								<button class="uk-button uk-button-success uk-width-1-1" id="saveWeekdayTalks"><span class="lang_save"></span></button>
-							</div>
-							<div class="uk-width-2-10">
-								<button class="uk-button uk-button-secondary uk-width-1-1" id="resetWeekdayTalks"><span class="lang_reset"></span></button>
-							</div>
-						</div>
-
-					</li>
-                    <li id="talks_container_weekend">
-						<table class="uk-table uk-table-hover uk-table-stripped uk-overflow-container">
-							<thead>
-								<tr>
-									<th class="uk-width-1-10">#</th>
-                                    <th class="uk-width-1-10 uk-text-center"><span class="lang_disabled"></span></th>
-									<th class="uk-width-4-10"><span class="lang_title"></span></th>
-									<th class="uk-width-2-10"><span class="lang_duration"></span></th>
-									<th class="uk-width-1-10 uk-text-center"><span class="lang_flexible"></span></th>
-									<th class="uk-width-1-10 uk-text-center"><span class="lang_invisible"></span></th>
-								</tr>
-							</thead>
-							<tbody id="weekendTalksTable"> </tbody>
-						</table>
-						<div class="uk-grid uk-text-right">
-							<div class="uk-width-6-10"></div>
-							<div class="uk-width-2-10">
-								<button class="uk-button uk-button-success uk-width-1-1" id="saveWeekendTalks"><span class="lang_save"></span></button>
-							</div>
-							<div class="uk-width-2-10">
-								<button class="uk-button uk-button-secondary uk-width-1-1" id="resetWeekendTalks"><span src="" class="lang_reset"></span></button>
-							</div>
-						</div>
-
-
-					</li>
-					<li id="settings_container">
-                        <div class="uk-grid border-bottom">
-                            <div class="uk-width-4-5"><span class="lang_internet_source"></span></div>
-                            <div class="uk-width-1-5"><input type="checkbox" id="internet_source"/></div>
-                        </div>
-                        <div class="uk-grid border-bottom">
-                            <div class="uk-width-4-5"><span class="lang_avi_source"></span></div>
-                            <div class="uk-width-1-5"><input type="file" webkitdirectory id="avi_src_selector"/></div>
-                        </div>
-                        <div class="uk-grid border-bottom">
-                            <div class="uk-width-4-5"><span class="lang_songs_source"></span></div>
-                            <div class="uk-width-1-5"><input type="file" webkitdirectory id="songs_src_selector"/></div>
-                        </div>
-                        <div class="uk-grid border-bottom">
-                            <div class="uk-width-3-5"><span class="lang_download_songs"></span></div>
-                            <div class="uk-width-1-5"><a href="" target="_blank" id="download_songs" class="uk-button uk-button-secondary uk-width-1-1"><span class="lang_download"></span><br/> 1-135</a></div>
-                            <div class="uk-width-1-5"><a href="" target="_blank" id="download_new_songs" class="uk-button uk-button-secondary uk-width-1-1"><span class="lang_download"></span></br>136-152</a></div>
-                        </div>
-                    </li>
+                <div class="uk-button-group"> </div>
             </div>
-
-            <div class="uk-width-3-10"><h3>Help</h3></div>
         </div>
-		<script type="text/template" id="talkElement">
-            <tr id="<%=id%>">
-                <td><%=id%></td>
-                <td class="uk-form uk-text-center">
-
-                <div class="toggle toggle-light" id="disabled" style="width: 50px;"></div>
-                <td class="uk-form"><input type="text"  class="uk-width-1-1 uk-form-blank" name="title" value="<%=title%>"></td>
-                <td class="uk-form"><input type="number"  class="uk-width-2-3 uk-form-blank" name="duration" value="<%=duration%>"> (sec.)</td>
-                <td class="uk-form uk-text-center"><input type="checkbox" name="flexible" <%if(flexible) {%>checked<%}%>/></td>
-                <td class="uk-form uk-text-center"><input type="checkbox" name="invisible" <%if(invisible) {%>checked<%}%>/></td>
-            </tr>
-        </script>
-        <script type="text/template" id="newTalkElement">
-            <tr id="0">
-                <td><button class="uk-button uk-button-small uk-button-primary" id="addTalk"><i class="uk-icon-plus"></i></button></td>
-                <td class="uk-form uk-text-center"><input type="checkbox" name="disabled"/></td>
-                <td class="uk-form"><input type="text uk-form-blank"  name="title" class="uk-width-1-1" value=""></td>
-                <td class="uk-form"><input type="number uk-form-blank"  name="duration" class="uk-width-2-3" value=""> (sec.)</td>
-                <td class="uk-form uk-text-center"><input type="checkbox" name="flexible" /></td>
-                <td class="uk-form uk-text-center"><input type="checkbox" name="invisible" /></td>
-            </tr>
-        </script>
+        <div class="uk-grid uk-margin-small-left uk-margin-small-top">
+            <ul class="uk-tab uk-width-1-1" data-uk-tab="{connect:'#settings-tabs'}">
+                <li class="uk-active"><a href="#"><span class="lang_settings"></span></a></li>
+            </ul>
+            <ul id="settings-tabs" class="uk-switcher uk-width-1-1" style="background: #fff;">
+                <li id="settings_container" class=" uk-margin-small-left uk-margin-small-right uk-margin-small-top">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-2">
+                            <div class="uk-grid">
+                                <div class="uk-width-4-5"><span class="lang_internet_source"></span></div>
+                                <div class="uk-width-1-5">
+                                    <div class="toggle toggle-light" id="internet_source" style="width: 50px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-2"> </div>
+                    </div>
+                    <!--<div class="uk-grid border-bottom">-->
+                        <!--<div class="uk-width-4-5"><span class="lang_avi_source"></span></div>-->
+                        <!--<div class="uk-width-1-5"><input type="file" webkitdirectory id="avi_src_selector"/></div>-->
+                    <!--</div>-->
+                    <!--<div class="uk-grid border-bottom">-->
+                        <!--<div class="uk-width-4-5"><span class="lang_songs_source"></span></div>-->
+                        <!--<div class="uk-width-1-5"><input type="file" webkitdirectory id="songs_src_selector"/></div>-->
+                    <!--</div>-->
+                    <div class="uk-grid uk-margin">
+                        <div class="uk-width-1-2">
+                            <div class="uk-grid">
+                                <div class="uk-width-2-2"><span class="lang_download_songs"></span></div>
+                                <div class="uk-width-1-2"><a href="" target="_blank" id="download_songs" class="uk-button uk-button-primary uk-width-1"><span class="lang_download"></span> (1-135)</a></div>
+                                <div class="uk-width-1-2"><a href="" target="_blank" id="download_new_songs" class="uk-button uk-button-primary uk-width-1"><span class="lang_download"></span> (136-152)</a></div>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-2"> 
+                            <div class="uk-grid">
+                                <div class="uk-width-1-1"><span class="lang_download_avi"></span></div>
+                                <div class="uk-width-1-1"><button href="" target="_blank" id="download_avi" class="uk-button uk-button uk-width-1-1" disabled><span class="lang_download"></span><br/></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+        </div>
+        </div>
         <script src="js/toggles.min.js"></script>
-        <script src="vendor/zipjs/zip.js"></script>
         <script src="js/common.js"></script>
         <script src="js/language.js"></script>
         <script src="js/settings.js"></script>

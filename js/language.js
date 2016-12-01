@@ -49,5 +49,6 @@ var lang = {
     'songs_source': 'Alege sursa fisiere audio',
     'new_version_available': 'O noua versiune este disponibila!',
     'update_to_version': 'Actualizeaza la versiunea',
-    'download_songs': 'Descarca arhiva zip a fisierelor audio ale cantarilor dupa care salveaza-le in directorul Songs din cadrul aplicatiei KHTimer'
+    'download_songs': 'Descarca arhiva zip a fisierelor audio ale cantarilor dupa care salveaza-le in directorul Songs din cadrul aplicatiei KHTimer',
+    'download_avi': 'Descarca arhiva zip a fisierelor avi (video cu versuri) ale cantarilor dupa care salveaza-le in directorul Avi din cadrul aplicatiei KHTimer'
 };
