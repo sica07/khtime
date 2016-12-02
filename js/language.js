@@ -50,5 +50,6 @@ var lang = {
     'avi_source': 'Alege sursa fisiere avi',
     'songs_source': 'Alege sursa fisiere audio',
     'download_songs': 'Descarca arhiva zip a fisierelor audio ale cantarilor dupa care salveaza-le in directorul Songs din cadrul aplicatiei KHTimer',
-    'download_avi': 'Descarca arhiva zip a fisierelor avi (video cu versuri) ale cantarilor dupa care salveaza-le in directorul Avi din cadrul aplicatiei KHTimer'
+    'download_avi': 'Descarca arhiva zip a fisierelor avi (video cu versuri) ale cantarilor dupa care salveaza-le in directorul Avi din cadrul aplicatiei KHTimer',
+    'how_to_close_prelude_window': 'Fereastra cu mesajul preludiu  se va inchide la apasarea butonului "Incepe programul"'
 };

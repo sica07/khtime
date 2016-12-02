@@ -382,15 +382,16 @@ var MeetingCounterContainer = Backbone.View.extend({
                 }
                 talkCounterModel.set({title: lang['no_talk_yet'], counterOn: false});
             });
-            $("#preludeDisplayContainer").show();
+            $preludeDisplayContainer.show();
         } else {
             $button.text(lang["end_meeting"]);
             $button.removeClass("uk-button-success").addClass("uk-button-danger");
             this.model.set('counterOn', true);
             this.countdown.start();
             this.stopPreludePlaying();
-            $("#preludeDisplayContainer").hide();
-            $preludeDisplayContainer.slideDown();
+            $("#preludeInfoMessage").hide();
+            //$preludeDisplayContainer.hide();
+            //$preludeDisplayContainer.slideDown();
             if(preludeWindow) {
                 preludeWindow.close();
                 preludeWindow = false;
@@ -399,6 +400,7 @@ var MeetingCounterContainer = Backbone.View.extend({
     },
     showPreludeDisplay: function(evt) {
         $("#preludeDisplayContainer").slideUp();
+        $("#preludeInfoMessage").show();
         if(!preludeWindow) {
             var displayNr = localStorage.getItem('premeetingDisplay') - 1;
             nw.Window.open('timer.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
@@ -422,7 +424,7 @@ var MeetingCounterContainer = Backbone.View.extend({
                             fontSize: width / 15,
                             fontColor: "#fff",            // the fill color
                             onComplete: function () {
-                                windowPreludeCountdown.close();
+                                //windowPreludeCountdown.close();
                             },
                             onTimeUpdate: function(time){
                             }
@@ -913,7 +915,6 @@ $(document).ready(function(){
         }
     });
     $('#reloadApp').click(function(){
-        console.log(nw)
         nw.Window.get().reload();
     })
     $('#closeApp').click(function(){
@@ -1047,4 +1048,5 @@ function addTranslatedStrings() {
     $('.lang_show_prelude_display' ).text(lang['show_prelude_display']);
     $('.lang_prelude_countdown' ).text(lang['prelude_countdown']);
     $('.lang_mins' ).text(lang['mins']);
+    $('.lang_how_to_close_prelude_window' ).text(lang['how_to_close_prelude_window']);
 }
