@@ -156,7 +156,7 @@ var TalkView = Backbone.View.extend({
             this.model.set('spent', spent, {silent: true})
             $button.removeClass('uk-button-danger');
                 //$button.removeClass('uk-button-danger').attr('disabled', true);
-            $button.children('i').addClass('uk-icon-check').removeClass('uk-icon-hourglass-start');
+            $button.children('i').removeClass('uk-icon-stop-circle').addClass('uk-icon-play');
             $title.removeClass('uk-text-success').addClass('uk-text-muted');
             if(spent > 0) {
                 $time.removeClass('uk-text-success').addClass('uk-text-muted');
