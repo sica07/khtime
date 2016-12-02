@@ -101,14 +101,26 @@
                         </div>
                     </div>
                 </div>
-                <h3 class="lang_images_and_pdf"></h3>
+                <h3 class="lang_images"></h3>
                 <div id ="pdf"  class="uk-grid uk-grid-collapse">
                     <div class="uk-width-1-5 uk-form-file uk-text-left">
-                        <button class="uk-button"><i class="uk-icon-file-o"></i></button>
-                        <input type="file" id="pdfFile" accept="image/*|application/pdf">
+                        <button class="uk-button"><i class="uk-icon-file-image-o"></i></button>
+                        <input type="file" id="imgFile" accept="image/*">
                     </div>
                     <div class="uk-width-3-5 uk-form uk-padding-remove" id="fileName">
                         <input type="TEXT" readonly placeholder="" id="imagePath"/>
+                    </div>
+                    <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="showImg"><i class="uk-icon-eye"></i></button></div>
+                </div>
+
+                <h3 class="lang_pdf"></h3>
+                <div id ="pdf"  class="uk-grid uk-grid-collapse">
+                    <div class="uk-width-1-5 uk-form-file uk-text-left">
+                        <button class="uk-button"><i class="uk-icon-file-pdf-o"></i></button>
+                        <input type="file" id="pdfFile" accept="application/pdf">
+                    </div>
+                    <div class="uk-width-3-5 uk-form uk-padding-remove" id="fileName">
+                        <input type="TEXT" readonly placeholder="" id="pdfPath"/>
                     </div>
                     <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="showPdf"><i class="uk-icon-eye"></i></button></div>
                     <div class="uk-width-5-5" id="pdfOptions">

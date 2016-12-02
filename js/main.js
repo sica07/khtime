@@ -551,18 +551,16 @@ $(document).ready(function(){
     }
 
     addTranslatedStrings();
-    var pdfFile = '';
 
     /*********************PDF**********************/
+    var pdfFile, imgFile = '';
     $("#pdfFile").on('change',function(evt){
-        imageFile = evt.currentTarget.files[0];
         pdfFile = evt.currentTarget.files[0];
+        document.getElementById('pdfPath').value = evt.currentTarget.files[0].name
+    });
+    $("#imgFile").on('change',function(evt){
+        imgFile = evt.currentTarget.files[0];
         document.getElementById('imagePath').value = evt.currentTarget.files[0].name
-        if(pdfFile.type === 'application/pdf') {
-            $("#pdfOptions").slideDown();
-        } else {
-            $("#pdfOptions").slideUp();
-        }
     });
     var $pageZoom = $("#pageZoom");
     $(".uk-icon-search-minus").click(function(){
@@ -585,7 +583,7 @@ $(document).ready(function(){
         $pageNr.val(parseInt($pageNr.val()) + 1);
     });
     $("#showPdf").on('click', function(evt){
-        var file = $("#imagePath").val();
+        var file = $("#pdfPath").val();
         var pageNr = $("#pageNr").val();
         var pageZoom = $("#pageZoom").val();
         if(videoWindow) {
@@ -602,6 +600,22 @@ $(document).ready(function(){
         $("#showPdf").children('i').removeClass('uk-icon-eye').addClass('uk-icon-close');
 
     })
+    $("#showImg").on('click', function(evt){
+        var file = $("#imagePath").val();
+        if(videoWindow) {
+            videoWindow.close();
+            videoWindow = false;
+            $("#showImg").children('i').removeClass('uk-icon-close').addClass('uk-icon-eye');
+            var html = '<input type="TEXT" class="uk-width-1-1" readonly placeholder=""/>';
+            $("#imagePath").html(html);
+            return;
+        }
+
+        createPdfWindow(imgFile, parseInt(localStorage.getItem('videoDisplay')) - 1, pageNr, pageZoom);
+        $("#showImg").children('i').removeClass('uk-icon-eye').addClass('uk-icon-close');
+
+    })
+
     function zoomPdf(){
         if(!videoWindow) { return; }
         var fileURL = URL.createObjectURL(pdfFile);
@@ -1015,7 +1029,8 @@ function addTranslatedStrings() {
     $('.lang_start_meeting' ).text(lang['start_meeting']);
     $('.lang_recalculate_time' ).text(lang['recalculate_time']);
     $('.lang_play_avi_songs' ).text(lang['play_avi_songs']);
-    $('.lang_images_and_pdf' ).text(lang['images_and_pdf']);
+    $('.lang_pdf' ).text(lang['pdf']);
+    $('.lang_images' ).text(lang['images']);
     $('.lang_show_prelude_display' ).text(lang['show_prelude_display']);
     $('.lang_prelude_countdown' ).text(lang['prelude_countdown']);
     $('.lang_mins' ).text(lang['mins']);

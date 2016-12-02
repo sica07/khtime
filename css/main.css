@@ -32,7 +32,6 @@ h1.dark-background, h2.dark-background, h3.dark-background {
 }
 .plus_seconds, .minus_seconds { color: #777; }
 .plus_seconds:hover, .minus_seconds:hover { color: #333; cursor: pointer; }
-#pdfOptions {display: none}
 #preludeInfoMessage {display: none}
 #preludeCountdown {background: transparent; color: #fff; width: 15px; border: none;}
 #prelude_countdown_setup {padding: 2px; font-weight: bold; margin-right: 5px;}
