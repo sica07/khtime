@@ -21,6 +21,7 @@
         <div class="uk-grid uk-margin-small-left uk-margin-small-top">
             <ul class="uk-tab uk-width-1-1" data-uk-tab="{connect:'#settings-tabs'}">
                 <li class="uk-active"><a href="#"><span class="lang_settings"></span></a></li>
+                <li><a href="#1"><span class="lang_displays"></span></a></li>
             </ul>
             <ul id="settings-tabs" class="uk-switcher uk-width-1-1" style="background: #fff;">
                 <li id="settings_container" class=" uk-margin-small-left uk-margin-small-right uk-margin-small-top">
@@ -36,12 +37,12 @@
                         <div class="uk-width-1-2"> </div>
                     </div>
                     <!--<div class="uk-grid border-bottom">-->
-                        <!--<div class="uk-width-4-5"><span class="lang_avi_source"></span></div>-->
-                        <!--<div class="uk-width-1-5"><input type="file" webkitdirectory id="avi_src_selector"/></div>-->
+                    <!--<div class="uk-width-4-5"><span class="lang_avi_source"></span></div>-->
+                    <!--<div class="uk-width-1-5"><input type="file" webkitdirectory id="avi_src_selector"/></div>-->
                     <!--</div>-->
                     <!--<div class="uk-grid border-bottom">-->
-                        <!--<div class="uk-width-4-5"><span class="lang_songs_source"></span></div>-->
-                        <!--<div class="uk-width-1-5"><input type="file" webkitdirectory id="songs_src_selector"/></div>-->
+                    <!--<div class="uk-width-4-5"><span class="lang_songs_source"></span></div>-->
+                    <!--<div class="uk-width-1-5"><input type="file" webkitdirectory id="songs_src_selector"/></div>-->
                     <!--</div>-->
                     <div class="uk-grid uk-margin">
                         <div class="uk-width-1-2">
@@ -59,12 +60,52 @@
                         </div>
                     </div>
                 </li>
-        </div>
-        </div>
-        <script src="js/toggles.min.js"></script>
-        <script src="js/common.js"></script>
-        <script src="js/language.js"></script>
-        <script src="js/settings.js"></script>
+                <li id="settings_container" class=" uk-margin-small-left uk-margin-small-right uk-margin-small-top">
+                    <div id ="display" class="uk-grid"> 
+                        <div class="uk-width-1-1 uk-text-left">
+                            <div class="uk-button-dropdown uk-width-1-1" data-uk-dropdown="{mode:'click'}">
+                                <button class="uk-button uk-width-1-1 uk-text-left" id="test"><span class="lang_select_display_for_prelude"></span><span id="premeeting-display-nr"></span><i class="uk-icon-caret-down"></i></button>
+                                <div class="uk-dropdown">
+                                    <ul class="uk-nav uk-nav-dropdown display_selectors" id="premeeting-display">
+                                        <li><a href="#0" class="uk-text-danger uk-text-small"><span class=" lang_deactivate_prelude_display"></span><i class="uk-icon-ban"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr/>
+
+                            <div class="uk-button-dropdown uk-width-1-1" data-uk-dropdown="{mode:'click'}">
+                                <button class="uk-button uk-width-1-1 uk-text-left"><span class="lang_select_display_for_timer"></span><span id="timer-display-nr"></span><i class="uk-icon-caret-down"></i></button>
+                                <div class="uk-dropdown">
+                                    <ul class="uk-nav uk-nav-dropdown display_selectors" id="timer-display">
+                                        <li><a href="#" class="uk-text-danger uk-text-small"><i class="uk-icon-ban"></i><span class="lang_deactivate_timer_display"></span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <hr/>
+
+                            <div class="uk-button-dropdown uk-width-1-1" data-uk-dropdown="{mode:'click'}">
+                                <button class="uk-button uk-width-1-1 uk-text-left"><span class='lang_select_display_for_video'></span><span id="video-display-nr"></span><i class="uk-icon-caret-down"></i></button>
+                                <div class="uk-dropdown">
+                                    <ul class="uk-nav uk-nav-dropdown display_selectors" id="video-display">
+                                        <li><a href="#" class="uk-text-danger uk-text-small"><i class="uk-icon-ban"></i><span class='lang_deactivate_video_display'></span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                </div>
+            </div>
+                <script type="text/template" id="displayListItem">
+                    <li><a href="#<%=id%>" class=""><%=text%><%=id%></a></li>
+                </script>
+                <script src="js/toggles.min.js"></script>
+                <script src="js/common.js"></script>
+                <script src="js/language.js"></script>
+                <script src="js/settings.js"></script>
     </body>
 </html>
 

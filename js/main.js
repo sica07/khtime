@@ -520,19 +520,6 @@ var ClockContainer = Backbone.View.extend({
     }
 });
 
-var DisplaySelectorView = Backbone.View.extend({
-    el: '.uk-nav.uk-nav-dropdown.display_selectors',
-    render: function(){
-        var tpl;
-        for(var i = 1; i <= screens.length; i++) {
-            tpl = _.template($('#displayListItem').html())({id: i, text: lang.activate_on_display_nr});
-            this.$el.append(tpl);
-        }
-
-        return this;
-    }
-});
-
 /***********Controller**********/
 $(document).ready(function(){
 
@@ -544,8 +531,6 @@ $(document).ready(function(){
     clockContainer.render();
     var talksView = new TalksView({collection: talks})
     talksView.render();
-    var displaySelectorsView = new DisplaySelectorView();
-    displaySelectorsView.render();
     $('.toggle').toggles();
     $("#settings_window").click(function(){
         nw.Window.open('settings.html', {width: 800, height: 600, title:'settings'}, function(win){ });
@@ -907,47 +892,6 @@ $(document).ready(function(){
     });
 
 
-    /*********************Displays**********************/
-    var premeetingDisplay = localStorage.getItem('premeetingDisplay');
-    var timerDisplay = localStorage.getItem('timerDisplay');
-    var videoDisplay = localStorage.getItem('videoDisplay');
-    var premeetingActive = document.getElementById("premeeting-display-nr");
-    var timerActive = document.getElementById("timer-display-nr");
-    var videoActive = document.getElementById("video-display-nr");
-
-    if(premeetingDisplay) {
-        premeetingActive.textContent = ' ['+premeetingDisplay+']';
-    }
-
-    if(timerDisplay) {
-        timerActive.textContent = ' ['+timerDisplay+']';
-    }
-
-    if(videoDisplay) {
-        videoActive.textContent = ' ['+videoDisplay+']';
-    }
-
-    $("#premeeting-display").on('click', function(evt){
-        var val = evt.target.hash.split("#");
-        if(val[1]) {
-            localStorage.setItem('premeetingDisplay', val[1])
-            premeetingActive.textContent = ' [' + val[1] +']';
-        }
-    });
-    $("#timer-display").on('click', function(evt){
-        var val = evt.target.hash.split("#");
-        if(val[1]) {
-            localStorage.setItem('timerDisplay', val[1])
-            timerActive.textContent = ' [' + val[1] + ']';
-        }
-    });
-    $("#video-display").on('click', function(evt){
-        var val = evt.target.hash.split("#");
-        if(val[1]) {
-            localStorage.setItem('videoDisplay', val[1])
-            videoActive.textContent = ' [' + val[1] + ']';
-        }
-    });
     $('#reloadApp').click(function(){
         nw.Window.get().reload();
     })
@@ -1067,15 +1011,8 @@ function addTranslatedStrings() {
     $('.lang_songs').text(lang['songs']);
     $('.lang_musical_prelude').text(lang['musical_prelude']);
     $('.lang_videos').text(lang['video']);
-    $('.lang_displays').text(lang['displays']);
-    $('.lang_select_display_for_prelude').text(lang['select_display_for_prelude']);
-    $('.lang_deactivate_prelude_display' ).text(lang['deactivate_prelude_display']);
-    $('.lang_select_display_for_timer' ).text(lang['select_display_for_timer']);
-    $('.lang_deactivate_video_display' ).text(lang['deactivate_video_display']);
     $('.lang_debt_time' ).text(lang['debt_time']);
     $('.lang_start_meeting' ).text(lang['start_meeting']);
-    $('.lang_deactivate_timer_display' ).text(lang['deactivate_timer_display']);
-    $('.lang_select_display_for_video' ).text(lang['select_display_for_video']);
     $('.lang_recalculate_time' ).text(lang['recalculate_time']);
     $('.lang_play_avi_songs' ).text(lang['play_avi_songs']);
     $('.lang_images_and_pdf' ).text(lang['images_and_pdf']);

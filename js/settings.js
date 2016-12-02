@@ -1,4 +1,23 @@
+nw.Screen.Init();
+var screens = nw.Screen.screens;
+
+var DisplaySelectorView = Backbone.View.extend({
+    el: '.uk-nav.uk-nav-dropdown.display_selectors',
+    render: function(){
+        var tpl;
+        for(var i = 1; i <= screens.length; i++) {
+            tpl = _.template($('#displayListItem').html())({id: i, text: lang.activate_on_display_nr});
+            this.$el.append(tpl);
+        }
+
+        return this;
+    }
+});
+
+
 $("document").ready(function() {
+    var displaySelectorsView = new DisplaySelectorView();
+    displaySelectorsView.render();
     $("#avi_src_selector").on('change', function(evt){
         var srcDir = evt.currentTarget.files[0];
         var fileURL = URL.createObjectURL(srcDir);
@@ -20,6 +39,47 @@ $("document").ready(function() {
     $("#download_songs").attr("href", hrefSongs);
     $("#download_new_songs").attr("href", hrefNewSongs);
     addTranslatedStrings();
+    /*********************Displays**********************/
+    var premeetingDisplay = localStorage.getItem('premeetingDisplay');
+    var timerDisplay = localStorage.getItem('timerDisplay');
+    var videoDisplay = localStorage.getItem('videoDisplay');
+    var premeetingActive = document.getElementById("premeeting-display-nr");
+    var timerActive = document.getElementById("timer-display-nr");
+    var videoActive = document.getElementById("video-display-nr");
+
+    if(premeetingDisplay) {
+        premeetingActive.textContent = ' ['+premeetingDisplay+']';
+    }
+
+    if(timerDisplay) {
+        timerActive.textContent = ' ['+timerDisplay+']';
+    }
+
+    if(videoDisplay) {
+        videoActive.textContent = ' ['+videoDisplay+']';
+    }
+
+    $("#premeeting-display").on('click', function(evt){
+        var val = evt.target.hash.split("#");
+        if(val[1]) {
+            localStorage.setItem('premeetingDisplay', val[1])
+            premeetingActive.textContent = ' [' + val[1] +']';
+        }
+    });
+    $("#timer-display").on('click', function(evt){
+        var val = evt.target.hash.split("#");
+        if(val[1]) {
+            localStorage.setItem('timerDisplay', val[1])
+            timerActive.textContent = ' [' + val[1] + ']';
+        }
+    });
+    $("#video-display").on('click', function(evt){
+        var val = evt.target.hash.split("#");
+        if(val[1]) {
+            localStorage.setItem('videoDisplay', val[1])
+            videoActive.textContent = ' [' + val[1] + ']';
+        }
+    });
 
     /*** Internet source ***/
     $isrc = $("#internet_source");
@@ -73,4 +133,11 @@ function addTranslatedStrings() {
     $(".lang_download_songs").text(lang['download_songs']);
     $(".lang_download_avi").text(lang['download_avi']);
     $(".lang_download").text(lang['download']);
+    $(".lang_displays").text(lang['displays']);
+    $('.lang_select_display_for_prelude').text(lang['select_display_for_prelude']);
+    $('.lang_deactivate_prelude_display' ).text(lang['deactivate_prelude_display']);
+    $('.lang_select_display_for_timer' ).text(lang['select_display_for_timer']);
+    $('.lang_deactivate_video_display' ).text(lang['deactivate_video_display']);
+    $('.lang_deactivate_timer_display' ).text(lang['deactivate_timer_display']);
+    $('.lang_select_display_for_video' ).text(lang['select_display_for_video']);
 }
