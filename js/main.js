@@ -3,34 +3,34 @@ var screens = nw.Screen.screens;
 //var screens = [1,2];
 //initialization of localStorage
 var defaultWeekendTalks = [
-        {"id":1,"title":"Cantare si rugaciune de inceput","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
-        {"id":2,"title":"Cuvantare publica","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
-        {"id":3,"title":"Cantare","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
-        {"id":4,"title":"Studiu Turnului de Veghe","duration":"3600","invisible":false,"disabled":false,"flexible":true,"talkId":0},
-        {"id":5,"title":"Cuvantare de serviciu","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
-        {"id":6,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
+    {"id":1,"title":"Cantare si rugaciune de inceput","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+    {"id":2,"title":"Cuvantare publica","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
+    {"id":3,"title":"Cantare","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+    {"id":4,"title":"Studiu Turnului de Veghe","duration":"3600","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+    {"id":5,"title":"Cuvantare de serviciu","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
+    {"id":6,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
 ];
 var defaultWeekdayTalks = [
-        {"id":1,"title":"Cantare si rugaciune de inceput","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
-        {"id":2,"title":"Introducere","duration":"180","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":3,"title":"Comori din Cuvant","duration":"600","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":4,"title":"Nestemate","duration":"480","invisible":false,"disabled":false,"flexible":true,"talkId":0},
-        {"id":5,"title":"Citirea Bibliei","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":6,"title":"Sfaturi Citirea Bibliei","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":7,"title":"Sa ne pregatim","duration":"900","invisible":false,"disabled":true,"flexible":true,"talkId":0},
-        {"id":8,"title":"Vizita initiala","duration":"120","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":9,"title":"Sfaturi Vizita Intiala","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":10,"title":"Vizita Ulterioara","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":11,"title":"Sfaturi Vizita Ulterioara","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":12,"title":"Studiu Biblic","duration":"360","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":13,"title":"Sfaturi Studiu Biblic","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
-        {"id":14,"title":"Cantare","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
-        {"id":15,"title":"Tema 1","duration":"900","invisible":false,"disabled":false,"flexible":true,"talkId":0},
-        {"id":16,"title":"Tema 2","duration":"360","invisible":false,"disabled":true,"flexible":true,"talkId":0},
-        {"id":17,"title":"Studiu Bibliei","duration":"1800","invisible":false,"disabled":false,"flexible":true,"talkId":0},
-        {"id":18,"title":"Cuvantare de serviciu","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
-        {"id":19,"title":"Incheiere","duration":"180","invisible":false,"disabled":false,"flexible":true,"talkId":0},
-        {"id":20,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
+    {"id":1,"title":"Cantare si rugaciune de inceput","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+    {"id":2,"title":"Introducere","duration":"180","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":3,"title":"Comori din Cuvant","duration":"600","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":4,"title":"Nestemate","duration":"480","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+    {"id":5,"title":"Citirea Bibliei","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":6,"title":"Sfaturi Citirea Bibliei","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":7,"title":"Sa ne pregatim","duration":"900","invisible":false,"disabled":true,"flexible":true,"talkId":0},
+    {"id":8,"title":"Vizita initiala","duration":"120","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":9,"title":"Sfaturi Vizita Intiala","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":10,"title":"Vizita Ulterioara","duration":"240","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":11,"title":"Sfaturi Vizita Ulterioara","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":12,"title":"Studiu Biblic","duration":"360","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":13,"title":"Sfaturi Studiu Biblic","duration":"60","invisible":false,"disabled":false,"flexible":false,"talkId":0},
+    {"id":14,"title":"Cantare","duration":"300","invisible":true,"disabled":false,"flexible":false,"talkId":0},
+    {"id":15,"title":"Tema 1","duration":"900","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+    {"id":16,"title":"Tema 2","duration":"360","invisible":false,"disabled":true,"flexible":true,"talkId":0},
+    {"id":17,"title":"Studiu Bibliei","duration":"1800","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+    {"id":18,"title":"Cuvantare de serviciu","duration":"1800","invisible":false,"disabled":true,"flexible":false,"talkId":0},
+    {"id":19,"title":"Incheiere","duration":"180","invisible":false,"disabled":false,"flexible":true,"talkId":0},
+    {"id":20,"title":"Cantare si rugaciune incheiere","duration":"300","invisible":true,"disabled":false,"flexible":true,"talkId":0}
 ];
 if(!localStorage.getItem('firstTime')) {
     localStorage.musicFolder = 'Songs/';
@@ -109,7 +109,7 @@ var date = new Date();
 var weekday = date.getDay();
 var talksmodels = JSON.parse(localStorage.getItem('weekdayTalks'));
 if(localStorage.getItem('internetSource') == 'true' ) {
-     talksmodels = JSON.parse(localStorage.getItem('netWeekdayTalks'));
+    talksmodels = JSON.parse(localStorage.getItem('netWeekdayTalks'));
 }
 if (weekday === 0 || weekday === 6) {
     talksmodels = JSON.parse(localStorage.getItem('weekendTalks'));
@@ -133,7 +133,7 @@ var TalkView = Backbone.View.extend({
         var duration = this.model.get('duration');
         this.model.set('duration_formatted', parseSeconds(duration), {silent: true});
         var tpl = _.template($('#talkContainer').html())(this.model.toJSON())
-            this.$el.html(tpl);
+        this.$el.html(tpl);
 
         return this;
     },
@@ -155,7 +155,7 @@ var TalkView = Backbone.View.extend({
             var spent = talkCounterModel.get('counter');
             this.model.set('spent', spent, {silent: true})
             $button.removeClass('uk-button-danger');
-                //$button.removeClass('uk-button-danger').attr('disabled', true);
+            //$button.removeClass('uk-button-danger').attr('disabled', true);
             $button.children('i').removeClass('uk-icon-stop-circle').addClass('uk-icon-play');
             $title.removeClass('uk-text-success').addClass('uk-text-muted');
             if(spent > 0) {
@@ -187,7 +187,7 @@ var TalksView = Backbone.View.extend({
             if(!model.get('disabled') && !model.get('invisible')) {
                 var talkView =  new TalkView({model: model});
                 talkView = talkView.render()
-                    that.$el.append(talkView.$el.html());
+                that.$el.append(talkView.$el.html());
                 if(localStorage.getItem('recalculateTime') > 0) {
                     $(".plus_seconds").hide();
                     $(".minus_seconds").hide();
@@ -228,7 +228,7 @@ var TalksView = Backbone.View.extend({
         if(!model.get('status')) {
             if(talkCounterModel.get('counterOn')) {
                 ukNotify(lang['another_talk_is_on!'], 1)
-                    return;
+                return;
             }
             model.set('status', true);
         } else {
@@ -251,11 +251,11 @@ var TalkCounterContainer = Backbone.View.extend({
     },
     render: function(){
         var tpl = _.template($('#talkCounterContainer').html())(this.model.toJSON())
-            if (this.model.get('talkDuration') > 0 && this.model.get('counterOn') === false) {
-            } else {
-                this.$el.html(tpl);
-                this.loadTalkCounter();
-            }
+        if (this.model.get('talkDuration') > 0 && this.model.get('counterOn') === false) {
+        } else {
+            this.$el.html(tpl);
+            this.loadTalkCounter();
+        }
         this.start();
 
         return this;
@@ -285,11 +285,11 @@ var TalkCounterContainer = Backbone.View.extend({
         }
         if(this.model.get('counterOn')) {
             talkCountdown.start()
-                this.createCounterWindow(this.model.get('talkDuration'), this.model.get('talkTitle'));
+            this.createCounterWindow(this.model.get('talkDuration'), this.model.get('talkTitle'));
         } else {
             talkCountdown.stop()
 
-                this.model.set('talkDuration', 0, {silent: true});
+            this.model.set('talkDuration', 0, {silent: true});
             if(timerWindow) {
                 windowTalkCountdown.stop();
                 timerWindow.close();
@@ -331,9 +331,9 @@ var TalkCounterContainer = Backbone.View.extend({
                                 if(time < 60) {
                                     this.fontColor = '#fefd58';
                                     $title.text(lang['prepare_finish_talk']).css({'color':'#fefd58'})
-                                        if(time%2 > 0) {
-                                            $title.css({'color': '#222'})
-                                        }
+                                    if(time%2 > 0) {
+                                        $title.css({'color': '#222'})
+                                    }
                                 }
                             }
                         });
@@ -374,7 +374,7 @@ var MeetingCounterContainer = Backbone.View.extend({
         if(this.model.get('counterOn')) {
             $button.text(lang["start_meeting"]);
             $button.removeClass("uk-button-danger").addClass("uk-button-success")
-                this.model.set('counterOn', false);
+            this.model.set('counterOn', false);
             this.countdown.stop();
             talks.each(function(model){
                 if(model.get('status')) {
@@ -382,14 +382,14 @@ var MeetingCounterContainer = Backbone.View.extend({
                 }
                 talkCounterModel.set({title: lang['no_talk_yet'], counterOn: false});
             });
-            $("a[href='settings.html']").show();
+            $("#preludeDisplayContainer").show();
         } else {
             $button.text(lang["end_meeting"]);
-            $button.removeClass("uk-button-success").addClass("uk-button-danger")
+            $button.removeClass("uk-button-success").addClass("uk-button-danger");
             this.model.set('counterOn', true);
             this.countdown.start();
             this.stopPreludePlaying();
-            $("a[href='settings.html']").hide();
+            $("#preludeDisplayContainer").hide();
             $preludeDisplayContainer.slideDown();
             if(preludeWindow) {
                 preludeWindow.close();
@@ -397,10 +397,10 @@ var MeetingCounterContainer = Backbone.View.extend({
             }
         }
     },
-showPreludeDisplay: function(evt) {
-	$("#preludeDisplayContainer").slideUp();
-	if(!preludeWindow) {
-		var displayNr = localStorage.getItem('premeetingDisplay') - 1;
+    showPreludeDisplay: function(evt) {
+        $("#preludeDisplayContainer").slideUp();
+        if(!preludeWindow) {
+            var displayNr = localStorage.getItem('premeetingDisplay') - 1;
             nw.Window.open('timer.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
                 win.enterFullscreen();
                 win.on('enter-fullscreen',function(win){
@@ -410,8 +410,8 @@ showPreludeDisplay: function(evt) {
                         var width = $document.width();
                         $document.find("h1").text(lang['prelude_window_title']);
                         var $title = $document.find("h1");
-			$title.css({'fontSize':'8em', 'color':'#fff','margin':'.5em'});
-			$document.find('body').css({'background':'#4a6da7'});
+                        $title.css({'fontSize':'8em', 'color':'#fff','margin':'.5em'});
+                        $document.find('body').css({'background':'#4a6da7'});
                         windowPreludeCountdown = $document.find("#talkCounter").countdown360({
                             radius:  width / 7,
                             seconds: localStorage.getItem('preludeCountdown'),
@@ -422,7 +422,7 @@ showPreludeDisplay: function(evt) {
                             fontSize: width / 15,
                             fontColor: "#fff",            // the fill color
                             onComplete: function () {
-				windowPreludeCountdown.close();
+                                windowPreludeCountdown.close();
                             },
                             onTimeUpdate: function(time){
                             }
@@ -430,15 +430,15 @@ showPreludeDisplay: function(evt) {
 
                     }, 1000)
                 })
-             preludeWindow = win;
+                preludeWindow = win;
             });
-	}
+        }
     },
     setPreludeCountdown: function() {
-	var preludeCountdown = $("#preludeCountdown").val()
-	preludeCountdown = parseInt(preludeCountdown) * 60;
-	localStorage.setItem('preludeCountdown',preludeCountdown)
-	},
+        var preludeCountdown = $("#preludeCountdown").val()
+        preludeCountdown = parseInt(preludeCountdown) * 60;
+        localStorage.setItem('preludeCountdown',preludeCountdown)
+    },
 
     stopPreludePlaying: function() {
         var $preludeButton = $("#playContinuous");
@@ -528,22 +528,22 @@ $(document).ready(function(){
     var clockContainer = new ClockContainer({});
     clockContainer.render();
     var talksView = new TalksView({collection: talks})
-        talksView.render();
+    talksView.render();
     var displaySelectorsView = new DisplaySelectorView();
     displaySelectorsView.render();
     $('.toggle').toggles();
     $("#settings_window").click(function(){
-            nw.Window.open('settings.html', {width: 800, height: 600, title:'settings'}, function(win){ });
+        nw.Window.open('settings.html', {width: 800, height: 600, title:'settings'}, function(win){ });
     });
     $("#schedule_window").click(function(){
-            nw.Window.open('schedule.html', {width: 800, height: 600, title:'schedule'}, function(win){ });
+        nw.Window.open('schedule.html', {width: 800, height: 600, title:'schedule'}, function(win){ });
     });
     $("#playAvi").click(function(el){
-            if($(this).data('toggles').active) {
-                    localStorage.setItem('playAviSong', 1)
-            } else {
-                    localStorage.setItem('playAviSong', 0)
-            }
+        if($(this).data('toggles').active) {
+            localStorage.setItem('playAviSong', 1)
+        } else {
+            localStorage.setItem('playAviSong', 0)
+        }
     });
     if(localStorage.getItem('playAviSong') == '1') {
         $("#playAvi").toggles(true);
@@ -587,359 +587,363 @@ $(document).ready(function(){
         videoWindow.window.location.hash = '#page=' + $("#pageNr").val() + '&zoom=' + $("#pageZoom").val();
         videoWindow.reload();
     });
-function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
-    if(displayNr < 0) {
-        ukNotify(lang['video_display_disabled'], 1)
-    }
-    if(!videoWindow) {
-        var fileURL = URL.createObjectURL(pdfFile)
-        var url = 'image.html';
-        if (pdfFile.type === 'application/pdf') {
-            url = fileURL + '#page=' + pageNr + '&zoom=' + pageZoom;
+    function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
+        if(displayNr < 0) {
+            ukNotify(lang['video_display_disabled'], 1)
         }
-        nw.Window.open(url, {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
-            win.enterFullscreen();
-            videoWindow = win;
-            if (url !== 'image.html') { return; }
-            win.on('enter-fullscreen',function(win){
-                var $img = this.window.document.querySelector('img');
-                $img.src = fileURL;
-                $img.addEventListener('load', function(){
-                    if ($img.offsetWidth > $img.offsetHeight) {
-                        $img.style.width = '99%';
-                    } else {
-                        $img.style.height = '99%';
-                    }
-                });
-            })
-
-        });
-    } else {
-        videoWindow.close();
-        videoWindow = false;
-    }
-    }
-            /*********************Video**********************/
-            $("input[id^='videoFile']").on('change',function(evt){
-                var id = evt.currentTarget.id.split('videoFile');
-                videoFiles[id[1]] = evt.currentTarget.files[0];
-                evt.currentTarget.parentNode.nextElementSibling.children[0].value = evt.currentTarget.files[0].name
-            })
-            $("button[id^='playVideo']").on('click',function(evt){
-                var $el = $(evt.currentTarget);
-                var id = evt.currentTarget.id.split('playVideo');
-                if(videoWindow) {
-                    videoWindow.close();
-                    videoWindow = false;
-                    $el.children('i').removeClass('uk-icon-stop').addClass('uk-icon-play');
-                    var html = '<input type="TEXT" class="uk-width-1-1" readonly placeholder=""/>';
-                    $("#durationVideo" + id[1]).html(html);
-                    return;
-                }
-                var fileURL = URL.createObjectURL(videoFiles[id[1]])
-                video.autoplay = true;
-                createVideoWindow(fileURL, parseInt(localStorage.getItem('videoDisplay')) - 1,id, true);
-                $el.children('i').removeClass('uk-icon-play').addClass('uk-icon-stop');
-            });
-
-
-            function createVideoWindow(fileSrc, displayNr, id, isMovie){
-                if(displayNr < 0) {
-                    ukNotify(lang['video_display_disabled'], 1)
-                }
-
-                if(!videoWindow) {
-                    nw.Window.open('video.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
-                        win.window.document.createElement('p');
-                        win.enterFullscreen();
-                        win.on('enter-fullscreen',function(win){
-                            video = this.window.document.querySelector('video')
-                            try{
-                                video.src = fileSrc;
-                                video.play();
-                                $(video).on('timeupdate', function() {
-                                    addProgressBar(video, id, isMovie);
-                                });
-                            }catch(e) {
-                                ukNotify(e, 0)
-                            }
-                            video.webkitRequestFullscreen();
-                        })
-                        videoWindow = win;
+        if(!videoWindow) {
+            var fileURL = URL.createObjectURL(pdfFile)
+            var url = 'image.html';
+            if (pdfFile.type === 'application/pdf') {
+                url = fileURL + '#page=' + pageNr + '&zoom=' + pageZoom;
+            }
+            nw.Window.open(url, {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
+                win.enterFullscreen();
+                videoWindow = win;
+                if (url !== 'image.html') { return; }
+                win.on('enter-fullscreen',function(win){
+                    var $img = this.window.document.querySelector('img');
+                    $img.src = fileURL;
+                    $img.addEventListener('load', function(){
+                        if ($img.offsetWidth > $img.offsetHeight) {
+                            $img.style.width = '99%';
+                        } else {
+                            $img.style.height = '99%';
+                        }
                     });
-                } else {
-                    videoWindow.close();
-                    videoWindow = false;
-                }
-            }
+                })
 
-            var playSelectedFile = function (event) {
-                var file = this.files[0]
-                var type = file.type
-                var videoNode = document.querySelector('video')
-                var canPlay = videoNode.canPlayType(type)
-                if (canPlay === '') canPlay = 'no'
-                var message = 'Can play type "' + type + '": ' + canPlay
-                var isError = canPlay === 'no'
-                displayMessage(message, isError)
-
-                if (isError) {
-                    return
-                }
-
-                var fileURL = URL.createObjectURL(file)
-                videoNode.src = fileURL
-            }
-
-            /*********************Audio**********************/
-
-            var audio = new Audio();
-            var audioplaying = 0;
-            var audiosrc, audionr;
-
-            function setSongNr() {
-                    var weekdaySongs = JSON.parse(localStorage.getItem('weekdaySongs'));
-                    var weekendSongs = JSON.parse(localStorage.getItem('weekendSongs'));
-                    if(weekdaySongs.length < 2) {
-                        return;
-                    }
-                    if (weekday === 0 || weekday === 6) {
-                        $("#titleAudio2").val(weekendSongs[0]);
-                        $("#titleAudio3").val(weekendSongs[1]);
-                    } else {
-                        $("#titleAudio1").val(weekdaySongs[0]);
-                        $("#titleAudio2").val(weekdaySongs[1]);
-                        $("#titleAudio3").val(weekdaySongs[2]);
-                    }
-            }
-
-            setSongNr();
-
-            function playPrelude(){
-                audio = new Audio();
-                //audionr = Math.floor(Math.random() * 152);
-                audionr = Math.floor(Math.random() * 20);
-                audiosrc = getAudiofileName(audionr, false);
-                audioplaying = audionr;
-
-                try {
-                    audio.src = audiosrc;
-                    audio.play();
-                    $(audio).on('ended', function(){
-                        audio = new Audio();
-                        playPrelude();
-                    })
-                } catch(e) {
-                    ukNotify(lang['file_not_exists_or_error'], 0);
-                    console.error(e);
-                }
-            }
-            var $preludeButton = $("#playContinuous");
-            function stopPreludePlaying(audio, $preludeButton) {
-                audio.pause();
-                audio = new Audio();
-                $preludeButton.removeClass('uk-button-danger');
-                $preludeButton.text(lang['musical_prelude'])
-            }
-
-            $preludeButton.click(function(evt){
-                if (audioplaying === audionr) {
-                    audionr = false;
-                    audioplaying = 0;
-                    stopPreludePlaying(audio, $preludeButton);
-                } else if (audioplaying === 0) {
-                    playPrelude();
-                    $preludeButton.addClass('uk-button-danger');
-                    $preludeButton.text(lang['playing_musical_prelude'])
-
-                } else {
-                    ukNotify(lang['another_song_playing'], 1)
-                    return;
-                }
             });
+        } else {
+            videoWindow.close();
+            videoWindow = false;
+        }
+    }
+    /*********************Video**********************/
+    $("input[id^='videoFile']").on('change',function(evt){
+        var id = evt.currentTarget.id.split('videoFile');
+        videoFiles[id[1]] = evt.currentTarget.files[0];
+        evt.currentTarget.parentNode.nextElementSibling.children[0].value = evt.currentTarget.files[0].name
+    })
+    $("button[id^='playVideo']").on('click',function(evt){
+        var $el = $(evt.currentTarget);
+        var id = evt.currentTarget.id.split('playVideo');
+        if(videoWindow) {
+            videoWindow.close();
+            videoWindow = false;
+            $el.children('i').removeClass('uk-icon-stop').addClass('uk-icon-play');
+            var html = '<input type="TEXT" class="uk-width-1-1" readonly placeholder=""/>';
+            $("#durationVideo" + id[1]).html(html);
+            return;
+        }
+        var fileURL = URL.createObjectURL(videoFiles[id[1]])
+        video.autoplay = true;
+        createVideoWindow(fileURL, parseInt(localStorage.getItem('videoDisplay')) - 1,id, true);
+        $el.children('i').removeClass('uk-icon-play').addClass('uk-icon-stop');
+    });
 
-            function getAudiofileName(audionr, isVideo){
-                if (10 <= audionr && audionr < 100) {
-                    audionr = '0' + audionr;
-                } else if (audionr < 10) {
-                    audionr = '00' + audionr;
-                }
 
-                if (isVideo) {
-                    var audiosrc = 'Cantarea ' + audionr + ' o.mp4'
-                    return 'file://' + localStorage.getItem('aviFolder') + '/' + audiosrc;
-                    //return 'Avi/' + audiosrc
-                }
+    function createVideoWindow(fileSrc, displayNr, id, isMovie){
+        if(displayNr < 0) {
+            ukNotify(lang['video_display_disabled'], 1)
+        }
 
-                if (audionr > 135) {
-                    var audiosrc = 'snnw_' + localStorage.getItem('songLanguage') + '_' + audionr + '.mp3'
-                } else {
-                    var audiosrc = 'iasnm_' + localStorage.getItem('songLanguage') + '_' + audionr + '.mp3'
-                }
-
-                return 'file://' + localStorage.getItem('musicFolder') + '/' + audiosrc;
-            }
-            function addProgressBar(audio, id, video) {
-                var html = '';
-                if (video) {
-                    html = '<input type="TEXT" class="uk-width-1-1" readonly placeholder=""/>';
-                }
-                if(audio.currentTime > 0) {
-                    html = '<div class="uk-progress uk-progress-striped uk-active">';
-                    html += '<div class="uk-progress-bar" style="width:' + (audio.currentTime / audio.duration)*100 + '% ;">';
-                    html += parseSeconds(Math.floor(audio.duration - audio.currentTime));
-                    html += '</div></div>';
-                }
-                if(video) {
-                    $("#durationVideo" + id[1]).html(html);
-                } else {
-                    $("#durationAudio" + id[1]).html(html);
-                }
-            }
-            function stopSongPlayer($audioEl, $audioTitle, id, audio) {
-                $audioEl.children('i').removeClass('uk-icon-stop').addClass('uk-icon-play');
-                audioplaying = 0;
-                $audioTitle.attr('readonly', false);
-                $("#durationAudio" + id[1]).html('');
-                $(audio).off('paused')
-                $(audio).off('ended')
-                $(audio).off('timeupdate')
-                audio = new Audio();
-            }
-
-            $("button[id^='playAudio']").click(function(evt){
-                var isVideo = false;
-                if(localStorage.getItem('playAviSong') == '1') {
-                    isVideo = true;
-                }
-                var id = evt.currentTarget.id.split('playAudio');
-                var $audioEl = $(evt.currentTarget);
-                var $audioTitle = $("#titleAudio" + id[1]);
-                var audionr = $audioTitle.val();
-
-                audiosrc = getAudiofileName(audionr, isVideo);
-
-                if (audioplaying === audionr) {
-                    if(isVideo && videoWindow) {
-                        videoWindow.close();
-                        videoWindow = false;
-                        $audioEl.children('i').removeClass('uk-icon-stop').addClass('uk-icon-play');
-                        $("#durationAudio" + id[1]).html('');
-                        audioplaying = 0;
-                    } else {
-                        audio.pause();
-                        stopSongPlayer($audioEl, $audioTitle, id, audio);
-                    }
-                } else if (audioplaying === 0) {
-
-                    console.log(audiosrc)
-                    if(!fileExists(audiosrc)) {
-                        ukNotify(lang['file_not_exists_or_error'], 0);
-                        $audioTitle.val('')
-                        audionr = 0;
-                        return;
-                    }
-
-                    audioplaying = audionr;
-
-                    if(isVideo && !videoWindow) {
-                        createVideoWindow(audiosrc, parseInt(localStorage.getItem('videoDisplay')) - 1, id, false);
-                    } else {
-                        audio.src = audiosrc;
-                        audio.play();
-                    }
-
-                    $audioEl.children('i').removeClass('uk-icon-play').addClass('uk-icon-stop');
-                    $audioTitle.attr('readonly', true);
-                    if(!isVideo) {
-                        $(audio).on('ended', function() {
-                            stopSongPlayer($audioEl, $audioTitle, id, audio);
+        if(!videoWindow) {
+            nw.Window.open('video.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
+                win.window.document.createElement('p');
+                win.enterFullscreen();
+                win.on('enter-fullscreen',function(win){
+                    video = this.window.document.querySelector('video')
+                    try{
+                        video.src = fileSrc;
+                        video.play();
+                        $(video).on('timeupdate', function() {
+                            addProgressBar(video, id, isMovie);
                         });
-                        $(audio).on('paused', function() {
-                            stopSongPlayer($audioEl, $audioTitle, id, audio);
-                        });
-
-                        $(audio).on('timeupdate', function() {
-                            addProgressBar(audio, id, false);
-                        });
+                    }catch(e) {
+                        ukNotify(e, 0)
                     }
-                } else {
-                    ukNotify(lang['another_song_playing'], 1)
-                    return;
-                }
-
+                    video.webkitRequestFullscreen();
+                })
+                videoWindow = win;
             });
+        } else {
+            videoWindow.close();
+            videoWindow = false;
+        }
+    }
 
+    var playSelectedFile = function (event) {
+        var file = this.files[0]
+        var type = file.type
+        var videoNode = document.querySelector('video')
+        var canPlay = videoNode.canPlayType(type)
+        if (canPlay === '') canPlay = 'no'
+        var message = 'Can play type "' + type + '": ' + canPlay
+        var isError = canPlay === 'no'
+        displayMessage(message, isError)
 
-            /*********************Displays**********************/
-            var premeetingDisplay = localStorage.getItem('premeetingDisplay');
-            var timerDisplay = localStorage.getItem('timerDisplay');
-            var videoDisplay = localStorage.getItem('videoDisplay');
-            var premeetingActive = document.getElementById("premeeting-display-nr");
-            var timerActive = document.getElementById("timer-display-nr");
-            var videoActive = document.getElementById("video-display-nr");
+        if (isError) {
+            return
+        }
 
-            if(premeetingDisplay) {
-                premeetingActive.textContent = ' ['+premeetingDisplay+']';
-            }
+        var fileURL = URL.createObjectURL(file)
+        videoNode.src = fileURL
+    }
 
-            if(timerDisplay) {
-                timerActive.textContent = ' ['+timerDisplay+']';
-            }
+    /*********************Audio**********************/
 
-            if(videoDisplay) {
-                videoActive.textContent = ' ['+videoDisplay+']';
-            }
+    var audio = new Audio();
+    var audioplaying = 0;
+    var audiosrc, audionr;
 
-            $("#premeeting-display").on('click', function(evt){
-                var val = evt.target.hash.split("#");
-                if(val[1]) {
-                    localStorage.setItem('premeetingDisplay', val[1])
-                    premeetingActive.textContent = ' [' + val[1] +']';
-                }
-            });
-            $("#timer-display").on('click', function(evt){
-                var val = evt.target.hash.split("#");
-                if(val[1]) {
-                    localStorage.setItem('timerDisplay', val[1])
-                    timerActive.textContent = ' [' + val[1] + ']';
-                }
-            });
-            $("#video-display").on('click', function(evt){
-                var val = evt.target.hash.split("#");
-                if(val[1]) {
-                    localStorage.setItem('videoDisplay', val[1])
-                    videoActive.textContent = ' [' + val[1] + ']';
-                }
-            });
-            $('#closeApp').click(function(){
-                nw.App.quit();
+    function setSongNr() {
+        var weekdaySongs = JSON.parse(localStorage.getItem('weekdaySongs'));
+        var weekendSongs = JSON.parse(localStorage.getItem('weekendSongs'));
+        if(weekdaySongs.length < 2) {
+            return;
+        }
+        if (weekday === 0 || weekday === 6) {
+            $("#titleAudio2").val(weekendSongs[0]);
+            $("#titleAudio3").val(weekendSongs[1]);
+        } else {
+            $("#titleAudio1").val(weekdaySongs[0]);
+            $("#titleAudio2").val(weekdaySongs[1]);
+            $("#titleAudio3").val(weekdaySongs[2]);
+        }
+    }
+
+    setSongNr();
+
+    function playPrelude(){
+        audio = new Audio();
+        //audionr = Math.floor(Math.random() * 152);
+        audionr = Math.floor(Math.random() * 20);
+        audiosrc = getAudiofileName(audionr, false);
+        audioplaying = audionr;
+
+        try {
+            audio.src = audiosrc;
+            audio.play();
+            $(audio).on('ended', function(){
+                audio = new Audio();
+                playPrelude();
             })
-            var $recalculateTime = $("#recalculateTime");
-            if(localStorage.getItem('recalculateTime') > 0) {
-                $recalculateTime.toggles(true);
+        } catch(e) {
+            ukNotify(lang['file_not_exists_or_error'], 0);
+            console.error(e);
+        }
+    }
+    var $preludeButton = $("#playContinuous");
+    function stopPreludePlaying(audio, $preludeButton) {
+        audio.pause();
+        audio = new Audio();
+        $preludeButton.removeClass('uk-button-danger');
+        $preludeButton.text(lang['musical_prelude'])
+    }
+
+    $preludeButton.click(function(evt){
+        if (audioplaying === audionr) {
+            audionr = false;
+            audioplaying = 0;
+            stopPreludePlaying(audio, $preludeButton);
+        } else if (audioplaying === 0) {
+            playPrelude();
+            $preludeButton.addClass('uk-button-danger');
+            $preludeButton.text(lang['playing_musical_prelude'])
+
+        } else {
+            ukNotify(lang['another_song_playing'], 1)
+            return;
+        }
+    });
+
+    function getAudiofileName(audionr, isVideo){
+        if (10 <= audionr && audionr < 100) {
+            audionr = '0' + audionr;
+        } else if (audionr < 10) {
+            audionr = '00' + audionr;
+        }
+
+        if (isVideo) {
+            var audiosrc = 'Cantarea ' + audionr + ' o.mp4'
+            return 'file://' + localStorage.getItem('aviFolder') + '/' + audiosrc;
+            //return 'Avi/' + audiosrc
+        }
+
+        if (audionr > 135) {
+            var audiosrc = 'snnw_' + localStorage.getItem('songLanguage') + '_' + audionr + '.mp3'
+        } else {
+            var audiosrc = 'iasnm_' + localStorage.getItem('songLanguage') + '_' + audionr + '.mp3'
+        }
+
+        return 'file://' + localStorage.getItem('musicFolder') + '/' + audiosrc;
+    }
+    function addProgressBar(audio, id, video) {
+        var html = '';
+        if (video) {
+            html = '<input type="TEXT" class="uk-width-1-1" readonly placeholder=""/>';
+        }
+        if(audio.currentTime > 0) {
+            html = '<div class="uk-progress uk-progress-striped uk-active">';
+            html += '<div class="uk-progress-bar" style="width:' + (audio.currentTime / audio.duration)*100 + '% ;">';
+            html += parseSeconds(Math.floor(audio.duration - audio.currentTime));
+            html += '</div></div>';
+        }
+        if(video) {
+            $("#durationVideo" + id[1]).html(html);
+        } else {
+            $("#durationAudio" + id[1]).html(html);
+        }
+    }
+    function stopSongPlayer($audioEl, $audioTitle, id, audio) {
+        $audioEl.children('i').removeClass('uk-icon-stop').addClass('uk-icon-play');
+        audioplaying = 0;
+        $audioTitle.attr('readonly', false);
+        $("#durationAudio" + id[1]).html('');
+        $(audio).off('paused')
+        $(audio).off('ended')
+        $(audio).off('timeupdate')
+        audio = new Audio();
+    }
+
+    $("button[id^='playAudio']").click(function(evt){
+        var isVideo = false;
+        if(localStorage.getItem('playAviSong') == '1') {
+            isVideo = true;
+        }
+        var id = evt.currentTarget.id.split('playAudio');
+        var $audioEl = $(evt.currentTarget);
+        var $audioTitle = $("#titleAudio" + id[1]);
+        var audionr = $audioTitle.val();
+
+        audiosrc = getAudiofileName(audionr, isVideo);
+
+        if (audioplaying === audionr) {
+            if(isVideo && videoWindow) {
+                videoWindow.close();
+                videoWindow = false;
+                $audioEl.children('i').removeClass('uk-icon-stop').addClass('uk-icon-play');
+                $("#durationAudio" + id[1]).html('');
+                audioplaying = 0;
+            } else {
+                audio.pause();
+                stopSongPlayer($audioEl, $audioTitle, id, audio);
+            }
+        } else if (audioplaying === 0) {
+
+            console.log(audiosrc)
+            if(!fileExists(audiosrc)) {
+                ukNotify(lang['file_not_exists_or_error'], 0);
+                $audioTitle.val('')
+                audionr = 0;
+                return;
             }
 
-            $recalculateTime.on('click', function(){
-                var val = 0;
-                if($recalculateTime.data('toggles').active) {
-                    val = 1;
-                    $.each($(".plus_seconds"), function(i, el){
-                        $(el).hide();
-                    })
-                    $.each($(".minus_seconds"), function(i, el){
-                        $(el).hide();
-                    })
-                } else {
-                    $.each($(".plus_seconds"), function(i, el){
-                        $(el).show();
-                    })
-                    $.each($(".minus_seconds"), function(i, el){
-                        $(el).show();
-                    })
-                }
-                localStorage.setItem('recalculateTime', val);
-            });
+            audioplaying = audionr;
+
+            if(isVideo && !videoWindow) {
+                createVideoWindow(audiosrc, parseInt(localStorage.getItem('videoDisplay')) - 1, id, false);
+            } else {
+                audio.src = audiosrc;
+                audio.play();
+            }
+
+            $audioEl.children('i').removeClass('uk-icon-play').addClass('uk-icon-stop');
+            $audioTitle.attr('readonly', true);
+            if(!isVideo) {
+                $(audio).on('ended', function() {
+                    stopSongPlayer($audioEl, $audioTitle, id, audio);
+                });
+                $(audio).on('paused', function() {
+                    stopSongPlayer($audioEl, $audioTitle, id, audio);
+                });
+
+                $(audio).on('timeupdate', function() {
+                    addProgressBar(audio, id, false);
+                });
+            }
+        } else {
+            ukNotify(lang['another_song_playing'], 1)
+            return;
+        }
+
+    });
+
+
+    /*********************Displays**********************/
+    var premeetingDisplay = localStorage.getItem('premeetingDisplay');
+    var timerDisplay = localStorage.getItem('timerDisplay');
+    var videoDisplay = localStorage.getItem('videoDisplay');
+    var premeetingActive = document.getElementById("premeeting-display-nr");
+    var timerActive = document.getElementById("timer-display-nr");
+    var videoActive = document.getElementById("video-display-nr");
+
+    if(premeetingDisplay) {
+        premeetingActive.textContent = ' ['+premeetingDisplay+']';
+    }
+
+    if(timerDisplay) {
+        timerActive.textContent = ' ['+timerDisplay+']';
+    }
+
+    if(videoDisplay) {
+        videoActive.textContent = ' ['+videoDisplay+']';
+    }
+
+    $("#premeeting-display").on('click', function(evt){
+        var val = evt.target.hash.split("#");
+        if(val[1]) {
+            localStorage.setItem('premeetingDisplay', val[1])
+            premeetingActive.textContent = ' [' + val[1] +']';
+        }
+    });
+    $("#timer-display").on('click', function(evt){
+        var val = evt.target.hash.split("#");
+        if(val[1]) {
+            localStorage.setItem('timerDisplay', val[1])
+            timerActive.textContent = ' [' + val[1] + ']';
+        }
+    });
+    $("#video-display").on('click', function(evt){
+        var val = evt.target.hash.split("#");
+        if(val[1]) {
+            localStorage.setItem('videoDisplay', val[1])
+            videoActive.textContent = ' [' + val[1] + ']';
+        }
+    });
+    $('#reloadApp').click(function(){
+        console.log(nw)
+        nw.Window.get().reload();
+    })
+    $('#closeApp').click(function(){
+        nw.App.quit();
+    })
+    var $recalculateTime = $("#recalculateTime");
+    if(localStorage.getItem('recalculateTime') > 0) {
+        $recalculateTime.toggles(true);
+    }
+
+    $recalculateTime.on('click', function(){
+        var val = 0;
+        if($recalculateTime.data('toggles').active) {
+            val = 1;
+            $.each($(".plus_seconds"), function(i, el){
+                $(el).hide();
+            })
+            $.each($(".minus_seconds"), function(i, el){
+                $(el).hide();
+            })
+        } else {
+            $.each($(".plus_seconds"), function(i, el){
+                $(el).show();
+            })
+            $.each($(".minus_seconds"), function(i, el){
+                $(el).show();
+            })
+        }
+        localStorage.setItem('recalculateTime', val);
+    });
 })
 
 function getElapsedTime(startingTime) {
@@ -987,8 +991,8 @@ function calculateRemainingTime(collection) {
             } else {
                 unflexiblePercent += percent;
             }
-                console.log(model.get('title'))
-                console.log(parseInt(model.get('duration')))
+            console.log(model.get('title'))
+            console.log(parseInt(model.get('duration')))
             totalTalksTimeTillEnd += parseInt(model.get('duration'));
             remainingTalks.add(model);
         }
