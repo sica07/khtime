@@ -37,6 +37,7 @@ h1.dark-background, h2.dark-background, h3.dark-background {
 #preludeCountdown {background: transparent; color: #fff; width: 15px; border: none;}
 #prelude_countdown_setup {padding: 2px; font-weight: bold; margin-right: 5px;}
 .border-bottom{border-bottom: 1px solid #ddd;}
-.uk-icon-plus-square, .uk-icon-minus-square {cursor: pointer}
+.uk-icon-plus-square, .uk-icon-minus-square, .uk-icon-search-plus, .uk-icon-search-minus {cursor: pointer}
+#pageZoom, #pageNr {width: 2em; border: none; font-weight: bold; background: transparent; text-align: center;}
 
 

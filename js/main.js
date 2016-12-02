@@ -578,7 +578,27 @@ $(document).ready(function(){
         } else {
             $("#pdfOptions").slideUp();
         }
-    })
+    });
+    var $pageZoom = $("#pageZoom");
+    $(".uk-icon-search-minus").click(function(){
+        if($pageZoom.val() > 25) {
+            $pageZoom.val(parseInt($pageZoom.val()) - 25);
+        }
+        zoomPdf();
+    });
+    $(".uk-icon-search-plus").click(function(){
+        $pageZoom.val(parseInt($pageZoom.val()) + 25);
+        zoomPdf();
+    });
+    var $pageNr = $("#pageNr");
+    $("#pageDown").click(function(){
+        if($pageNr.val() > 1) {
+            $pageNr.val(parseInt($pageNr.val()) - 1);
+        }
+    });
+    $("#pageUp").click(function(){
+        $pageNr.val(parseInt($pageNr.val()) + 1);
+    });
     $("#showPdf").on('click', function(evt){
         var file = $("#imagePath").val();
         var pageNr = $("#pageNr").val();
@@ -597,12 +617,12 @@ $(document).ready(function(){
         $("#showPdf").children('i').removeClass('uk-icon-eye').addClass('uk-icon-close');
 
     })
-    $(".pdfControls").click(function(){
+    function zoomPdf(){
         if(!videoWindow) { return; }
         var fileURL = URL.createObjectURL(pdfFile);
         videoWindow.window.location.hash = '#page=' + $("#pageNr").val() + '&zoom=' + $("#pageZoom").val();
         videoWindow.reload();
-    });
+    }
     function createPdfWindow(pdfFile, displayNr, pageNr, pageZoom){
         if(displayNr < 0) {
             ukNotify(lang['video_display_disabled'], 1)

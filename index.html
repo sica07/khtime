@@ -111,11 +111,21 @@
                         <input type="TEXT" readonly placeholder="" id="imagePath"/>
                     </div>
                     <div class="uk-width-1-5 uk-padding-remove"><button class="uk-button  uk-width-1-1" id="showPdf"><i class="uk-icon-eye"></i></button></div>
-                    <div class="uk-width-5-5 uk-form uk-padding-remove" id="pdfOptions">
-                        <label for="pageNr" class="uk-width-2-10">Pag.</label>
-                        <input type="number" class="uk-width-3-10 pdfControls" min="1" id="pageNr" value="1"/>
-                        <label for="pageZoom" class="uk-width-2-10">Zoom</label>
-                        <input type="number" class="uk-width-3-10 pdfControls" step="25" id="pageZoom" value="100"/>
+                    <div class="uk-width-5-5" id="pdfOptions">
+                        <div class="uk-grid">
+                            <div class="uk-width-1-2 uk-text-left">
+                                <label for="pageNr">Pag. </label>
+                                <span id="pagDown" class="uk-icon-minus-square uk-margin-small-top"></span>
+                                <input type="readonly" id="pageNr" value="1" style="width: 1em;"/>
+                                <span id="pageUp" class="uk-icon-plus-square uk-margin-small-top"></span>
+                            </div>
+                            <div class="uk-width-1-2 uk-text-right">
+                                <label for="pageZoom">Zoom: </label>
+                                <span class="uk-icon-search-minus uk-margin-small-top"></span>
+                                <input type="readonly" id="pageZoom" value="100"/><span class=" uk-margin-small-top">%</span>
+                                <span class="uk-icon-search-plus uk-margin-small-top"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
