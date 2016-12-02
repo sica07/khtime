@@ -445,7 +445,7 @@ var MeetingCounterContainer = Backbone.View.extend({
     minusPreludeCountdown: function() {
        var $preludeCountdown = $("#preludeCountdown");
         if($preludeCountdown.val() > 1) {
-           $preludeCountdown.val(parseInt($preludeCountdown.val()) + 1);
+           $preludeCountdown.val(parseInt($preludeCountdown.val()) - 1);
         }
         this.setPreludeCountdown();
     },
