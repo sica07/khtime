@@ -190,9 +190,13 @@
                 <span class="lang_how_to_close_prelude_window uk-text-primary"></span>
             </div>
 			<div class="uk-width-5-5 uk-text-center" id="preludeDisplayContainer">
-			    <a href="#" class="uk-button uk-button-primary uk-width-8-10 uk-margin-large-top lang_show_prelude_display"></a><br/>
-			    <span class="lang_prelude_countdown"></span><br/>
-			    <input type="number" id="preludeCountdown" min="1" value="" style="width:50px"/><span class="lang_mins"></span>
+			    <a href="#" class="uk-button uk-button-primary uk-width-8-10 uk-margin-large-top lang_show_prelude_display uk-margin-small-bottom"></a><br/>
+                <span id="prelude_countdown_setup">
+                    <span id="preludeCountdownMinus" class="uk-icon-minus-square uk-margin-small-top"></span>
+                    <input type="readonly" id="preludeCountdown" value="" /><span class="lang_mins"></span>
+                    <span id="preludeCountdownPlus" class="uk-icon-plus-square uk-margin-small-top"></span>
+                </span>
+			    <span class="lang_prelude_countdown uk-text-small"></span><br/>
 			</div>
             </div>
         </script>

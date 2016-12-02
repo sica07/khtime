@@ -354,7 +354,8 @@ var MeetingCounterContainer = Backbone.View.extend({
     events: {
         'click button.uk-button': 'toggleCounterState',
         'click a.uk-button': 'showPreludeDisplay',
-        'click #preludeCountdown': 'setPreludeCountdown'
+        'click #preludeCountdownPlus': 'plusPreludeCountdown',
+        'click #preludeCountdownMinus': 'minusPreludeCountdown'
     },
     initialize: function() {
         this.listenTo(this.model, 'change:debtTime', function(){this.loadDebtCounter()})
@@ -435,6 +436,18 @@ var MeetingCounterContainer = Backbone.View.extend({
                 preludeWindow = win;
             });
         }
+    },
+    plusPreludeCountdown: function() {
+       var $preludeCountdown = $("#preludeCountdown");
+       $preludeCountdown.val(parseInt($preludeCountdown.val()) + 1);
+       this.setPreludeCountdown();
+    },
+    minusPreludeCountdown: function() {
+       var $preludeCountdown = $("#preludeCountdown");
+        if($preludeCountdown.val() > 1) {
+           $preludeCountdown.val(parseInt($preludeCountdown.val()) + 1);
+        }
+        this.setPreludeCountdown();
     },
     setPreludeCountdown: function() {
         var preludeCountdown = $("#preludeCountdown").val()
@@ -540,6 +553,7 @@ $(document).ready(function(){
     $("#schedule_window").click(function(){
         nw.Window.open('schedule.html', {width: 800, height: 600, title:'schedule'}, function(win){ });
     });
+
     $("#playAvi").click(function(el){
         if($(this).data('toggles').active) {
             localStorage.setItem('playAviSong', 1)
