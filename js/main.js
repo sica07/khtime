@@ -362,7 +362,7 @@ var MeetingCounterContainer = Backbone.View.extend({
     render: function(){
         var tpl = _.template($('#meetingCounterContainer').html())(this.model.toJSON())
         this.$el.html(tpl);
-this.$el.find("#preludeCountdown").val(parseInt(localStorage.getItem('preludeCountdown'))/60);
+        this.$el.find("#preludeCountdown").val(parseInt(localStorage.getItem('preludeCountdown'))/60);
         this.loadMeetingCounter();
         this.loadDebtCounter();
 
@@ -390,9 +390,11 @@ this.$el.find("#preludeCountdown").val(parseInt(localStorage.getItem('preludeCou
             this.countdown.start();
             this.stopPreludePlaying();
             $("a[href='settings.html']").hide();
-	    $preludeDisplayContainer.slideDown();
-	    preludeWindow.close();
-	    preludeWindow = false;
+            $preludeDisplayContainer.slideDown();
+            if(preludeWindow) {
+                preludeWindow.close();
+                preludeWindow = false;
+            }
         }
     },
 showPreludeDisplay: function(evt) {
