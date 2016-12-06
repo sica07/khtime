@@ -738,13 +738,41 @@ $(document).ready(function(){
         if(weekdaySongs.length < 2) {
             return;
         }
+        var isVideo = checkVideo();
         if (weekday === 0 || weekday === 6) {
             $("#titleAudio2").val(weekendSongs[0]);
+            var audiosrc = getAudiofileName(weekendSongs[0], isVideo);
+            fileExists(audiosrc).then(function(){}, function(){
+                ukNotify(lang['file_not_exists_or_error'], 0);
+                $("#titleAudio2").addClass('uk-form-danger');
+            });
             $("#titleAudio3").val(weekendSongs[1]);
+            audiosrc = getAudiofileName(weekendSongs[1], isVideo);
+            fileExists(audiosrc).then(function(){}, function(){
+                ukNotify(lang['file_not_exists_or_error'], 0);
+                $("#titleAudio3").addClass('uk-form-danger');
+            });
         } else {
+            var audiosrc = getAudiofileName(weekdaySongs[0], isVideo);
             $("#titleAudio1").val(weekdaySongs[0]);
+            fileExists(audiosrc).then(function(){}, function(){
+                ukNotify(lang['file_not_exists_or_error'], 0);
+                $("#titleAudio1").addClass('uk-form-danger');
+            });
+
             $("#titleAudio2").val(weekdaySongs[1]);
+            audiosrc = getAudiofileName(weekdaySongs[1], isVideo);
+            fileExists(audiosrc).then(function(){}, function(){
+                ukNotify(lang['file_not_exists_or_error'], 0);
+                $("#titleAudio2").addClass('uk-form-danger');
+            });
+
             $("#titleAudio3").val(weekdaySongs[2]);
+            audiosrc = getAudiofileName(weekdaySongs[1], isVideo);
+            fileExists(audiosrc).then(function(){}, function(){
+                ukNotify(lang['file_not_exists_or_error'], 0);
+                $("#titleAudio3").addClass('uk-form-danger');
+            });
         }
     }
 
@@ -841,16 +869,28 @@ $(document).ready(function(){
         audio = new Audio();
     }
 
-    $("button[id^='playAudio']").click(function(evt){
-        var isVideo = false;
-        if(localStorage.getItem('playAviSong') == '1') {
-            isVideo = true;
-        }
-        var id = evt.currentTarget.id.split('playAudio');
-        var $audioEl = $(evt.currentTarget);
-        var $audioTitle = $("#titleAudio" + id[1]);
+    $("button[id^='titleAudio']").change(function(evt){
+        var isVideo = checkVideo();
+        var $audiotitle = getAudioNr(evt);
         var audionr = $audioTitle.val();
+        audiosrc = getAudiofileName(audionr, isVideo);
 
+        fileExists(audiosrc).then(
+            function(){//success
+                $audioTitle.removeClass('uk-form-danger');
+            },
+            function(){//error
+                ukNotify(lang['file_not_exists_or_error'], 0);
+                $audioTitle.addClass('uk-form-danger');
+                audionr = 0;
+            }
+        );
+    });
+    $("button[id^='playAudio']").click(function(evt){
+
+        var isVideo = checkVideo();
+        var $audioTitle = getAudioNr(evt);
+        var audionr = $audioTitle.val();
         audiosrc = getAudiofileName(audionr, isVideo);
 
         if (audioplaying === audionr) {
@@ -866,13 +906,6 @@ $(document).ready(function(){
             }
         } else if (audioplaying === 0) {
 
-            console.log(audiosrc)
-            if(!fileExists(audiosrc)) {
-                ukNotify(lang['file_not_exists_or_error'], 0);
-                $audioTitle.val('')
-                audionr = 0;
-                return;
-            }
 
             audioplaying = audionr;
 
@@ -1004,20 +1037,28 @@ function calculateRemainingTime(collection) {
     }
 }
 function fileExists(url) {
-    var response = true;
-    return true;
-    $.ajax({
+    return $.ajax({
         url: url,
         type: 'GET',
-        async: false,
         success: function(data){
-            console.warn(data)
+            return true;
         },
         error: function(e) {
-            response = false;
+            return;
         }
     })
-    return response;
+}
+function checkVideo(){
+    if(localStorage.getItem('playAviSong') == '1') {
+        return true;
+    }
+    return;
+}
+function getAudioTitleEl(evt){
+    var id = evt.currentTarget.id.split('playAudio');
+    var $audioEl = $(evt.currentTarget);
+
+    return $("#titleAudio" + id[1]);
 }
 function addTranslatedStrings() {
     $('.lang_weekday_meeting').text(lang['weekday_meeting']);
