@@ -802,8 +802,7 @@ $(document).ready(function(){
 
         if (isVideo) {
             var audiosrc = 'Cantarea ' + audionr + ' o.mp4'
-            return 'file://' + localStorage.getItem('aviFolder') + '/' + audiosrc;
-            //return 'Avi/' + audiosrc
+            return 'file://' + process.cwd() + '/../' + localStorage.getItem('aviFolder') + '' + audiosrc;
         }
 
         if (audionr > 135) {
@@ -812,7 +811,7 @@ $(document).ready(function(){
             var audiosrc = 'iasnm_' + localStorage.getItem('songLanguage') + '_' + audionr + '.mp3'
         }
 
-        return 'file://' + localStorage.getItem('musicFolder') + '/' + audiosrc;
+        return 'file://' + process.cwd() + '/../' + localStorage.getItem('musicFolder') + '' + audiosrc;
     }
     function addProgressBar(audio, id, video) {
         var html = '';
@@ -1006,6 +1005,7 @@ function calculateRemainingTime(collection) {
 }
 function fileExists(url) {
     var response = true;
+    return true;
     $.ajax({
         url: url,
         type: 'GET',
