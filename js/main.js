@@ -871,7 +871,7 @@ $(document).ready(function(){
 
     $("button[id^='titleAudio']").change(function(evt){
         var isVideo = checkVideo();
-        var $audiotitle = getAudioNr(evt);
+        var $audiotitle = getAudioTitleEl(evt);
         var audionr = $audioTitle.val();
         audiosrc = getAudiofileName(audionr, isVideo);
 
@@ -889,7 +889,8 @@ $(document).ready(function(){
     $("button[id^='playAudio']").click(function(evt){
 
         var isVideo = checkVideo();
-        var $audioTitle = getAudioNr(evt);
+        var id = evt.currentTarget.id.split('playAudio');
+        var $audioTitle = getAudioTitleEl(evt);
         var audionr = $audioTitle.val();
         audiosrc = getAudiofileName(audionr, isVideo);
 
