@@ -311,7 +311,6 @@ var TalkCounterContainer = Backbone.View.extend({
                     setTimeout(function(){
                         var $document = $(that.window.document);
                         var width = $document.width();
-                        console.log($document);
                         $document.find("h1").text(title);
                         var $title = $document.find("h1");
                         windowTalkCountdown = $document.find("#talkCounter").countdown360({
@@ -567,22 +566,29 @@ $(document).ready(function(){
         if($pageZoom.val() > 25) {
             $pageZoom.val(parseInt($pageZoom.val()) - 25);
         }
-        zoomPdf();
+        zoomOrChangePageOfPdf();
     });
     $(".uk-icon-search-plus").click(function(){
         $pageZoom.val(parseInt($pageZoom.val()) + 25);
-        zoomPdf();
+        zoomOrChangePageOfPdf();
     });
     var $pageNr = $("#pageNr");
     $("#pageDown").click(function(){
         if($pageNr.val() > 1) {
             $pageNr.val(parseInt($pageNr.val()) - 1);
         }
+        zoomOrChangePageOfPdf();
     });
     $("#pageUp").click(function(){
         $pageNr.val(parseInt($pageNr.val()) + 1);
+        zoomOrChangePageOfPdf();
     });
     $("#showPdf").on('click', function(evt){
+        //make sure that no video is running
+        if(videoWindow && videoWindow.window.location.hash.length === 0) {
+            ukNotify(lang['another_song_playing'], 1)
+            return;
+        }
         var file = $("#pdfPath").val();
         var pageNr = $("#pageNr").val();
         var pageZoom = $("#pageZoom").val();
@@ -601,6 +607,11 @@ $(document).ready(function(){
 
     })
     $("#showImg").on('click', function(evt){
+        //make sure that no video is running
+        if(videoWindow && videoWindow.window.location.hash.length === 0) {
+            ukNotify(lang['another_song_playing'], 1)
+            return;
+        }
         var file = $("#imagePath").val();
         if(videoWindow) {
             videoWindow.close();
@@ -616,8 +627,11 @@ $(document).ready(function(){
 
     })
 
-    function zoomPdf(){
-        if(!videoWindow) { return; }
+    function zoomOrChangePageOfPdf(){
+        //make sure that in the videowindow is loaded a pdf file
+        if(!videoWindow || videoWindow.window.location.hash.length === 0) {
+            return;
+        }
         var fileURL = URL.createObjectURL(pdfFile);
         videoWindow.window.location.hash = '#page=' + $("#pageNr").val() + '&zoom=' + $("#pageZoom").val();
         videoWindow.reload();
@@ -890,6 +904,7 @@ $(document).ready(function(){
 
         var isVideo = checkVideo();
         var id = evt.currentTarget.id.split('playAudio');
+        var $audioEl = $(evt.currentTarget);
         var $audioTitle = getAudioTitleEl(evt);
         var audionr = $audioTitle.val();
         audiosrc = getAudiofileName(audionr, isVideo);
@@ -1017,8 +1032,6 @@ function calculateRemainingTime(collection) {
             } else {
                 unflexiblePercent += percent;
             }
-            console.log(model.get('title'))
-            console.log(parseInt(model.get('duration')))
             totalTalksTimeTillEnd += parseInt(model.get('duration'));
             remainingTalks.add(model);
         }
@@ -1057,7 +1070,6 @@ function checkVideo(){
 }
 function getAudioTitleEl(evt){
     var id = evt.currentTarget.id.split('playAudio');
-    var $audioEl = $(evt.currentTarget);
 
     return $("#titleAudio" + id[1]);
 }
