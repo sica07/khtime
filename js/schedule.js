@@ -73,7 +73,7 @@ var WeekendTalksContainer = Backbone.View.extend({
         });
     },
     toggleDisable: function(evt){
-        var id = $(evt.currentTarget).parents('tr').attr('id');
+        var id = $(evt.currentTarget).parents('div').parents('.uk-grid').attr('id');
         var model = this.collection.findWhere({'id' : parseInt(id)});
         if(model) {
             model.set('disabled', !model.get('disabled'));
@@ -158,7 +158,7 @@ var WeekdayTalksContainer = Backbone.View.extend({
         return this;
     },
     toggleDisable: function(evt){
-        var id = $(evt.currentTarget).parents('tr').attr('id');
+        var id = $(evt.currentTarget).parents('div').parents('.uk-grid').attr('id');
         var model = this.collection.findWhere({'id' : parseInt(id)});
         if(model) {
             model.set('disabled', !model.get('disabled'));
