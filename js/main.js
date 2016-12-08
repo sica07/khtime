@@ -612,7 +612,8 @@ $(document).ready(function(){
     })
     $("#showImg").on('click', function(evt){
         //make sure that no video is running
-        if(videoWindow && videoWindow.window.location.hash.length === 0) {
+        if(videoWindow && videoWindow.window.location.pathname !== '/image.html') {
+        console.log(videoWindow.window.location)
             ukNotify(lang['another_song_playing'], 1)
             return;
         }
