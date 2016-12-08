@@ -42,13 +42,16 @@ function getScheduleFromInternet() {
             ukNotify(errr + '\n Error downloading the weekly schedule', 0);
             return;
         }
-        var schedule = JSON.parse(data);
-        localStorage.setItem('netWeekdayTalks',JSON.stringify(schedule.weekdayTalks));
-        localStorage.setItem('weekdaySongs',JSON.stringify(schedule.weekdaySongs));
-        localStorage.setItem('weekendSongs',JSON.stringify(schedule.weekendSongs));
-        window.location.reload();
-        sessionStorage.setItem('internetSource',true);
-        return;
+        if(obj.status === 200){
+            var schedule = JSON.parse(data);
+            localStorage.setItem('netWeekdayTalks',JSON.stringify(schedule.weekdayTalks));
+            localStorage.setItem('weekdaySongs',JSON.stringify(schedule.weekdaySongs));
+            localStorage.setItem('weekendSongs',JSON.stringify(schedule.weekendSongs));
+            //window.location.reload();
+            chrome.runtime.reload();
+            sessionStorage.setItem('internetSource',true);
+            return;
+        }
 
     }).fail(function(){
         ukNotify('Error downloading the weekly schedule', 0);

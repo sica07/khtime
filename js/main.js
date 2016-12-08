@@ -958,11 +958,13 @@ $(document).ready(function(){
 
 
     $('#reloadApp').click(function(){
-        nw.Window.get().reload();
-    })
+        chrome.runtime.reload();
+    });
+
     $('#closeApp').click(function(){
         nw.App.quit();
-    })
+    });
+
     var $recalculateTime = $("#recalculateTime");
     if(localStorage.getItem('recalculateTime') > 0) {
         $recalculateTime.toggles(true);
@@ -990,6 +992,9 @@ $(document).ready(function(){
     });
     /************Year Text*********************/
     if(localStorage.getItem('showYearText') != false) {
+        showYearText();
+    }
+    function showYearText(){
         if(!yearTextWindow) {
             var displayNr = localStorage.getItem('premeetingDisplay') - 1;
             nw.Window.open('yearText.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
@@ -1005,9 +1010,9 @@ $(document).ready(function(){
                 yearTextWindow = win;
             });
         }
-
     }
-})
+
+});
 
 function getElapsedTime(startingTime) {
     return  Math.round((new Date().getTime() - startingTime)/1000);

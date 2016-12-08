@@ -84,20 +84,38 @@ $("document").ready(function() {
     /*** Internet source ***/
     $isrc = $("#internet_source");
     $isrc.toggles();
-    console.log($isrc.data('toggles'))
     $isrc.click(function(){
         if($(this).data('toggles').active) {
             localStorage.setItem('internetSource', 'true')
         } else {
             localStorage.setItem('internetSource', 0)
         }
+        ukNotify(lang['should_restart_app'], 1)
     });
     if(localStorage.getItem('internetSource') == 'true') {
         $isrc.toggles(true);
     } else {
         $isrc.toggles(false);
     }
-    /*** end if Internet source***/
+    /*** end of Internet source***/
+
+    /*** Year Text ***/
+    $ytxt = $("#show_yeartext");
+    $ytxt.toggles();
+    $ytxt.click(function(){
+        if($(this).data('toggles').active) {
+            localStorage.setItem('showYearText', 'true');
+        } else {
+            localStorage.setItem('showYearText', 0);
+        }
+        ukNotify(lang['should_restart_app'], 1);
+    });
+    if(localStorage.getItem('showYearText') == 'true') {
+        $ytxt.toggles(true);
+    } else {
+        $ytxt.toggles(false);
+    }
+    /*** end of Year Text***/
 });
 function ukNotify(text, type) {
     var html = '';
@@ -128,6 +146,7 @@ function addTranslatedStrings() {
     $(".lang_reset").text(lang['reset']);
     $(".lang_settings").text(lang['settings']);
     $(".lang_internet_source").text(lang['internet_source']);
+    $(".lang_show_yeartext").text(lang['show_yeartext']);
     $(".lang_avi_source").text(lang['avi_source']);
     $(".lang_songs_source").text(lang['songs_source']);
     $(".lang_download_songs").text(lang['download_songs']);

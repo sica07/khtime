@@ -45,6 +45,7 @@ var lang = {
     'prelude_window_title': 'Va rugam sa va ocupati locurile!',
     'prelude_countdown': 'Durata numaratoare inversa',
     'mins': 'min.',
+    'show_yeartext': 'Afiseaza textul anului',
     'new_version_available': 'O noua versiune este disponibila!',
     'update_to_version': 'Actualizeaza la versiunea',
     'internet_source': 'Preia lista teme online',
@@ -52,5 +53,6 @@ var lang = {
     'songs_source': 'Alege sursa fisiere audio',
     'download_songs': 'Descarca arhiva zip a fisierelor audio ale cantarilor dupa care salveaza-le in directorul Songs din cadrul aplicatiei KHTimer',
     'download_avi': 'Descarca arhiva zip a fisierelor avi (video cu versuri) ale cantarilor dupa care salveaza-le in directorul Avi din cadrul aplicatiei KHTimer',
-    'how_to_close_prelude_window': 'Fereastra cu mesajul preludiu  se va inchide la apasarea butonului "Incepe programul"'
+    'how_to_close_prelude_window': 'Fereastra cu mesajul preludiu  se va inchide la apasarea butonului "Incepe programul"',
+    'should_restart_app': 'Aceasta setare va fi activa dupa repornirea aplicatiei'
 };
