@@ -1005,6 +1005,10 @@ $(document).ready(function(){
                     setTimeout(function(){
                         var $document = $(that.window.document);
                         var yearText = JSON.parse(localStorage.getItem('yearText'));
+                        $document.find("#container").css('height',$document.height());
+                        $document.find("#yearTextContainer").css('width',$document.width() - 100);
+                        $document.find('h1').text(yearText.text);
+                        $document.find('h2').text(yearText.scripture);
                         $document.find('body').css('background',yearText.background);
                     }, 1000)
                 })
