@@ -47,21 +47,16 @@ function getScheduleFromInternet() {
             localStorage.setItem('netWeekdayTalks',JSON.stringify(schedule.weekdayTalks));
             localStorage.setItem('weekdaySongs',JSON.stringify(schedule.weekdaySongs));
             localStorage.setItem('weekendSongs',JSON.stringify(schedule.weekendSongs));
+            var dateobj = new Date();
+            var date = dateobj.getDate();
+            localStorage.setItem('internetSourceUpdate',date);
             //window.location.reload();
             chrome.runtime.reload();
-            sessionStorage.setItem('internetSource',true);
             return;
         }
 
     }).fail(function(){
         ukNotify('Error downloading the weekly schedule', 0);
-    });
-}
-function getVersion() {
-    $.get('https://dl.dropboxusercontent.com/u/28737407/version', function(data){
-        if(data.trim() != localStorage.getItem('version')) {
-            showModal('<h3>' + lang['new_version_available'] + '</h3> <br/> <a href="http://sica07.github.io/khtime/update.html" class="uk-button">' + lang['update_to_version'] + ' ' + data.trim() + '</a>');
-        }
     });
 }
 function showModal(txt) {
@@ -70,7 +65,10 @@ function showModal(txt) {
     $('body').append('<a href="#modal" id="tempHref" data-uk-modal></a>').find('#tempHref').trigger('click');
 }
 
-if(localStorage.getItem('internetSource') == 'true' && !sessionStorage.getItem('internetSource')) {
-    getScheduleFromInternet();
+function getVersion() {
+    $.get('https://dl.dropboxusercontent.com/u/28737407/version', function(data){
+        if(data.trim() != localStorage.getItem('version')) {
+            showModal('<h3>' + lang['new_version_available'] + '</h3> <br/> <a href="http://sica07.github.io/khtime/update.html" class="uk-button">' + lang['update_to_version'] + ' ' + data.trim() + '</a>');
+        }
+    });
 }
-getVersion();

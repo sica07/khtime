@@ -117,22 +117,6 @@ $("document").ready(function() {
     }
     /*** end of Year Text***/
 });
-function ukNotify(text, type) {
-    var html = '';
-    if(type === 0) {
-        html += '<div class="uk-alert uk-alert-danger notify-box">';
-    }
-    if(type === 1) {
-        html += '<div class="uk-alert uk-alert-success notify-box">';
-    }
-    html += ' <a href="" class="uk-alert-close uk-close"></a>';
-    html += '<p>' + text + '</p>';
-    html += '</div>';
-    $('body').append($(html));
-    setTimeout(function() {
-        $('.notify-box').remove();
-    }, 4000);
-}
 function addTranslatedStrings() {
     $(".lang_weekday_meeting").text(lang['weekday_meeting']);
     $(".lang_weekend_meeting").text(lang['weekend_meeting']);

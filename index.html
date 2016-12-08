@@ -209,5 +209,13 @@
         <script src="js/toggles.min.js"></script>
         <script src="js/common.js"></script>
         <script src="js/main.js"></script>
+        <script>
+            var dateobj = new Date();
+            var date = dateobj.getDate();
+            if(localStorage.getItem('internetSource') == 'true' && localStorage.getItem('internetSourceUpdate') != date) {
+                getScheduleFromInternet();
+                getVersion();
+            }
+        </script>
     </body>
 </html>

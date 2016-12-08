@@ -46,6 +46,7 @@ if(!localStorage.getItem('firstTime')) {
     localStorage.netWeekdayTalks = '[]';
     localStorage.preludeCountdown = '120';
     localStorage.internetSource = false;
+    localStorage.internetSourceUpdate = '';
     localStorage.weekendSongs = '[]';
     localStorage.weekdaySongs = '[]';
     localStorage.showYearText = false;
@@ -1013,6 +1014,7 @@ $(document).ready(function(){
     }
 
 });
+
 
 function getElapsedTime(startingTime) {
     return  Math.round((new Date().getTime() - startingTime)/1000);
