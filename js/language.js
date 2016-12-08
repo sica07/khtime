@@ -16,7 +16,7 @@ var lang = {
     'displays': 'Control monitoare',
     'select_display_for_prelude': 'Monitorul pt. afisaj preludiu',
     'select_display_for_timer': 'Monitor pt afisaj cronomentru',
-    'select_display_for_video': 'Monitor pt afisaj materilae video',
+    'select_display_for_video': 'Monitor pt afisaj materiale multimedia',
     'activate_on_display_nr': 'Activeaza pe monitorul nr.',
     'deactivate_prelude_display': 'Dezactiveaza afisajul pentru preludiu',
     'deactivate_timer_display': 'Dezactiveaza afisajul pentru cronomentru',

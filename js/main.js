@@ -48,6 +48,8 @@ if(!localStorage.getItem('firstTime')) {
     localStorage.internetSource = false;
     localStorage.weekendSongs = '[]';
     localStorage.weekdaySongs = '[]';
+    localStorage.showYearText = false;
+    localStorage.yearText = JSON.stringify({yearText: 'Textul anului fain este acum', scripture: 'Matei 99:99', background: 'red', color: 'white'});
     localStorage.firstTime = 0;
     localStorage.version = '0.8.0';
 }
@@ -55,6 +57,7 @@ var talkCountdown = false;
 var windowTalkCountdown = false;
 var timerWindow = false;
 var videoFiles = [];
+var yearTextWindow = false;
 var videoWindow = false;
 var preludeWindow = false;
 /***********Models**************/
@@ -985,6 +988,25 @@ $(document).ready(function(){
         }
         localStorage.setItem('recalculateTime', val);
     });
+    /************Year Text*********************/
+    if(localStorage.getItem('showYearText') != false) {
+        if(!yearTextWindow) {
+            var displayNr = localStorage.getItem('premeetingDisplay') - 1;
+            nw.Window.open('yearText.html', {x: screens[displayNr].work_area.x + 1, y: screens[displayNr].work_area.y + 1}, function(win){
+                win.enterFullscreen();
+                win.on('enter-fullscreen',function(win){
+                    var that = this;
+                    setTimeout(function(){
+                        var $document = $(that.window.document);
+                        var yearText = JSON.parse(localStorage.getItem('yearText'));
+                        $document.find('body').css('background',yearText.background);
+                    }, 1000)
+                })
+                yearTextWindow = win;
+            });
+        }
+
+    }
 })
 
 function getElapsedTime(startingTime) {
