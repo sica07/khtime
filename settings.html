@@ -22,6 +22,7 @@
             <ul class="uk-tab uk-width-1-1" data-uk-tab="{connect:'#settings-tabs'}">
                 <li class="uk-active"><a href="#"><span class="lang_settings"></span></a></li>
                 <li><a href="#1"><span class="lang_displays"></span></a></li>
+                <li><a href="#2"><span class="lang_customize_look"></span></a></li>
             </ul>
             <ul id="settings-tabs" class="uk-switcher uk-width-1-1" style="background: #fff;">
                 <li id="settings_container" class=" uk-margin-small-left uk-margin-small-right uk-margin-small-top">
@@ -104,11 +105,37 @@
                         </div>
                     </div>
                 </li>
+                <li id="settings_container" class=" uk-margin-small-left uk-margin-small-right uk-margin-small-top">
+                    <div class="uk-grid">
+                        <div class="uk-width-1-2">
+                            <h3 class="lang_year_text"></h3>
+                            <div class="uk-grid">
+                                <div class="uk-width-1-5">
+                                    <div class="triggerYearText" id="yearTextBackground" value="" style="width: 20px; padding: 4px; height: 20px;border: 1px solid rgba(0,0,0,.2); border-bottom-color: rgba(0,0,0,.3); border-radius: 4px;"><div><div style=""></div></div></div>
+                                </div>
+                                <div class="uk-width-4-5">
+                                    <span class="lang_background_color"></span>
+                                </div>
+                            </div>
+                            <div class="uk-grid">
+                                <div class="uk-width-1-5">
+                                    <div class="triggerYearText" id="yearTextColor" value="" style="width: 20px; padding: 4px; height: 20px;border: 1px solid rgba(0,0,0,.2); border-bottom-color: rgba(0,0,0,.3); border-radius: 4px;"><div><div style=""></div></div></div>
+                                </div>
+                                <div class="uk-width-4-5">
+                                    <span class="lang_text_color"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-2"> 
+                        </div>
+                    </div>
+                </li>
                 </div>
             </div>
                 <script type="text/template" id="displayListItem">
                     <li><a href="#<%=id%>" class=""><%=text%><%=id%></a></li>
                 </script>
+                <script src="vendor/jqColorPicker.min.js"></script>
                 <script src="js/toggles.min.js"></script>
                 <script src="js/common.js"></script>
                 <script src="js/language.js"></script>

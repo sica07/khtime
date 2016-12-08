@@ -50,7 +50,7 @@ if(!localStorage.getItem('firstTime')) {
     localStorage.weekendSongs = '[]';
     localStorage.weekdaySongs = '[]';
     localStorage.showYearText = false;
-    localStorage.yearText = JSON.stringify({yearText: 'Textul anului fain este acum', scripture: 'Matei 99:99', background: 'red', color: 'white'});
+    localStorage.yearText = JSON.stringify({yearText: 'Textul anului fain este acum', scripture: 'Matei 99:99', background: 'rgb(0,0,0)', color: 'rgb(255,255,255)'});
     localStorage.firstTime = 0;
     localStorage.version = '0.8.0';
 }
@@ -1006,9 +1006,18 @@ $(document).ready(function(){
                         var $document = $(that.window.document);
                         var yearText = JSON.parse(localStorage.getItem('yearText'));
                         $document.find("#container").css('height',$document.height());
-                        $document.find("#yearTextContainer").css('width',$document.width() - 100);
-                        $document.find('h1').text(yearText.text);
-                        $document.find('h2').text(yearText.scripture);
+                        $document.find("#yearTextContainer").css({
+                            'width': ($document.width() - 100),
+                            'borderTop':'2px solid ' + yearText.color,
+                            'borderBottom':'2px solid ' + yearText.color
+                        });
+                        //set shadow
+                        var backgroundValues = yearText.background.split('(')[1].split(')')[0].split(',');
+                        console.log(backgroundValues);
+                        var shadowColor = 'rgb(' + (parseInt(backgroundValues[0]) - 50) + ',' + (parseInt(backgroundValues[1]) - 50) + ',' + (parseInt(backgroundValues[2]) - 50) + ')'
+
+                        $document.find('h1').text(yearText.text).css('textShadow', '10px 5px 10px ' + shadowColor);
+                        $document.find('h2').text(yearText.scripture).css('textShadow', '10px 5px 10px ' + shadowColor);
                         $document.find('body').css('background',yearText.background);
                     }, 1000)
                 })

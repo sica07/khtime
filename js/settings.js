@@ -115,6 +115,27 @@ $("document").ready(function() {
     } else {
         $ytxt.toggles(false);
     }
+    $(".triggerYearText").colorPicker({
+        renderCallback: function($el) {
+            console.log($el)
+            var ytxt = JSON.parse(localStorage.getItem('yearText'));
+            if($el.attr('id') === 'yearTextBackground'){
+                console.log($el.attr("value"))
+                ytxt.background = $el.css("backgroundColor");
+            } else {
+                ytxt.color = $el.css("backgroundColor");
+            }
+            localStorage.setItem('yearText', JSON.stringify(ytxt));
+        }
+
+    });
+    var yearText = JSON.parse(localStorage.getItem("yearText"));
+    $("#yearTextBackground").attr("value", yearText.background);
+    $("#yearTextBackground").css("backgroundColor", yearText.background);
+    $("#yearTextBackground").children('div').css("backgroundColor", yearText.background);
+    $("#yearTextColor").attr("value", yearText.color);
+    $("#yearTextColor").css("backgroundColor", yearText.color);
+    $("#yearTextColor").children('div').css("backgroundColor", yearText.color);
     /*** end of Year Text***/
 });
 function addTranslatedStrings() {
@@ -126,10 +147,12 @@ function addTranslatedStrings() {
     $(".lang_duration").text(lang['duration']);
     $(".lang_flexible").text(lang['flexible']);
     $(".lang_invisible").text(lang['invisible']);
+    $(".lang_customize_look").text(lang['customize_look']);
     $(".lang_save").text(lang['save']);
     $(".lang_reset").text(lang['reset']);
     $(".lang_settings").text(lang['settings']);
     $(".lang_internet_source").text(lang['internet_source']);
+    $(".lang_year_text").text(lang['year_text']);
     $(".lang_show_yeartext").text(lang['show_yeartext']);
     $(".lang_avi_source").text(lang['avi_source']);
     $(".lang_songs_source").text(lang['songs_source']);
@@ -143,4 +166,6 @@ function addTranslatedStrings() {
     $('.lang_deactivate_video_display' ).text(lang['deactivate_video_display']);
     $('.lang_deactivate_timer_display' ).text(lang['deactivate_timer_display']);
     $('.lang_select_display_for_video' ).text(lang['select_display_for_video']);
+    $(".lang_background_color").text(lang['background_color']);
+    $(".lang_text_color").text(lang['text_color']);
 }
